@@ -5,14 +5,13 @@
       hidden
     >O débito do segurado é de {{valorDebito}} - {{valorDebitoExtenso}} referente ao período que vai de {{periodoDebitoInicial}} a {{periodoDebitoFinal}}</div>
     <button class="btn btn-primary" @click="addTexto('debito')">Tem Débito</button>
-    <button class="btn btn-primary" @click="incluirItem">AddItem</button>
+
     <br />
 
     <textarea rows="10" v-model="trataLinhas"></textarea>
     <input type="text" v-model="newtext" placeholder="new element" />
 
     <mob-new-element-text v-model="newtext" />
-    {{newtext}}
   </div>
 </template>
 
@@ -44,14 +43,11 @@ export default {
 
   data() {
     return {
-      newtext: "e agora",
+      newtext: "",
       localText: []
     };
   },
   methods: {
-    incluirItem() {
-      this.linhas.splice(2, 0, ["Novo texto incluido no array de textos"]);
-    },
     digitou(e) {
       console.log("Vc digitou" + e.target.value);
     },
