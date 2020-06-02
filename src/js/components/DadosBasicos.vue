@@ -1,5 +1,39 @@
 <template>
   <div class="card">
+    <!-- {{collapsesToShow}} -->
+    <div class="card">
+      <div class="card-body">
+        <h4>Marque para exibir os textos</h4>
+        <input
+          type="checkbox"
+          @click="changeCollapsesToShow($event.target.name)"
+          name="defesa"
+          checked
+        />Defesa
+        <input
+          type="checkbox"
+          @click="changeCollapsesToShow($event.target.name)"
+          name="analiseprevia"
+          checked
+        />Análise Prévia
+        <input
+          type="checkbox"
+          @click="changeCollapsesToShow($event.target.name)"
+          name="relatorioanalise"
+        />Relatório de análise
+        <input
+          type="checkbox"
+          @click="changeCollapsesToShow($event.target.name)"
+          name="conclusivo"
+        />Conclusivo
+        <input
+          type="checkbox"
+          @click="changeCollapsesToShow($event.target.name)"
+          name="recurso"
+        />Recurso
+      </div>
+    </div>
+
     <div class="card-header" id="headingDadosBasicos">
       <h5 class="mb-0">Dados Básicos</h5>
     </div>
@@ -140,6 +174,7 @@ export default {
   name: "DadosBasicos",
   data() {
     return {
+      elementos: [],
       money: {
         decimal: ",",
         thousands: ".",
@@ -160,11 +195,26 @@ export default {
       "changeStatusCadUnicoAtual",
       "changePeriodoDebitoInicial",
       "changePeriodoDebitoFinal",
-      "changeTextos"
+      "changeTextos",
+      "changeCollapsesToShow"
     ]),
 
+    verElementos(e) {
+      // if (this.elementos.indexOf(e.target.name) >= 0) {
+      //ELEMENT EXISTS IN ARRAY
+      // let name = e.target.name;
+      // let checked = e.target.checked;
+      // console.log(`Nome ${name} -> ${checked}`);
+      // this.$store.dispatch("changeCollapsesToShow", name);
+      // }
+      //   if (checked) {
+      //     this.elementos.push(e.target.name);
+      //   } else this.elementos.splice(this.elementos.indexOf(name), 1);
+      //   console.log("Defesa: " + this.elementos.indexOf("defesa"));
+    },
+
     converteMoeda(e) {
-      console.log("Dados Basicos -> Debito: " + e.target.value);
+      // console.log("Dados Basicos -> Debito: " + e.target.value);
       const valor = e.target.value;
       // this.valorDebito.numero = valor;
 
@@ -199,7 +249,8 @@ export default {
       valorDebitoExtenso: "getValorDebitoExtenso",
       periodoDebitoInicial: "getPeriodoDebitoInicial",
       periodoDebitoFinal: "getPeriodoDebitoFinal",
-      textos: "getTextos"
+      textos: "getTextos",
+      collapsesToShow: "getCollapsesToShow"
     }),
 
     // statusCadUnico: {

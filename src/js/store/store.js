@@ -8,6 +8,7 @@ import seguradoModule from "./modules/seguradoModule";
 import regularidadeModule from "./modules/regularidadeModule";
 import debitoModule from "./modules/debitoModule";
 import textosModule from "./modules/textosModule";
+import appOptions from "./modules/appOptions";
 
 export default new Vuex.Store({
   modules: {
@@ -16,6 +17,7 @@ export default new Vuex.Store({
     regularidadeModule,
     debitoModule,
     textosModule,
+    appOptions,
   },
   state: {
     origemApuracao: [

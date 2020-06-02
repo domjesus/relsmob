@@ -6,6 +6,7 @@
       idCollapse="#collapseOficioDefesa"
       classeMostrar="collapse show"
       idColl="collapseOficioDefesa"
+      v-show="collapsesToShow.indexOf('defesa')>=0"
     >
       <oficio-defesa />
     </InnerAccordion>
@@ -16,6 +17,7 @@
       classeMostrar="collapse"
       aria-expanded="true"
       elemento="Análise Prévia"
+      v-show="collapsesToShow.indexOf('analiseprevia')>=0"
     >
       <regular-component />
       <mob-irregular />
@@ -27,21 +29,24 @@
       idCollapse="#collapseAnalise"
       classeMostrar="collapse"
       idColl="collapseAnalise"
+      v-show="collapsesToShow.indexOf('relatorioanalise')>=0"
     >
       <mob-relatorio-analise />
     </InnerAccordion>
 
     <InnerAccordion
-      conteudo="Header do Relatório Conclusivo"
+      conteudo="Relatório Conclusivo"
       idCollapse="#collapseRelConclusivo"
       classeMostrar="collapse"
       idColl="collapseRelConclusivo"
+      v-show="collapsesToShow.indexOf('conclusivo')>=0"
     />
     <InnerAccordion
       conteudo="Ofício de Recurso"
       idCollapse="#collapseRelExtra"
       classeMostrar="collapse"
       idColl="collapseRelExtra"
+      v-show="collapsesToShow.indexOf('recurso')>=0"
     >
       <mob-oficio-recurso />
     </InnerAccordion>
@@ -55,6 +60,7 @@ import MobIrregular from "./MobIrregular.vue";
 import MobRelatorioAnalise from "./MobRelatorioAnalise.vue";
 import MobOficioRecurso from "./MobOficioRecurso.vue";
 import OficioDefesa from "./OficioDefesa.vue";
+import { mapGetters } from "vuex";
 
 export default {
   components: {
@@ -66,9 +72,7 @@ export default {
     OficioDefesa
   },
   computed: {
-    nomeSegurado() {
-      return this.$store.state.nomeSegurado;
-    }
+    ...mapGetters({ collapsesToShow: "getCollapsesToShow" })
   }
 };
 </script>
