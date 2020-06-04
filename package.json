@@ -4,7 +4,9 @@
   "description": "relatorios mob",
   "main": "main.js",
   "dependencies": {
-    "v-money": "^0.8.1"
+    "v-money": "^0.8.1",
+    "vue-masked-input": "^0.5.2",
+    "vue-the-mask": "^0.11.1"
   },
   "devDependencies": {
     "@babel/core": "^7.10.1",
