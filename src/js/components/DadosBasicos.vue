@@ -199,13 +199,14 @@
         </div>
       </div>
       <!-- END DIV ROW -->
+      {{testMixin()}}
     </div>
     <!-- END DIV DEBITO -->
 
     <div id="tooltip" role="tooltip" data-popper-arrow v-show="erroData">
       <p id="innerTooltip">Data incorreta!</p>
       <div id="arrow" data-popper-arrow></div>
-    </div>
+    </div>    
   </div>
   <!-- END DIV CARD -->
 </template>
@@ -215,6 +216,7 @@ import { mapGetters, mapActions } from "vuex";
 import { VMoney } from "v-money";
 import { mask } from "vue-the-mask";
 import { createPopper } from "@popperjs/core";
+import Utils from "./../../mixins/Utils.js"
 
 export default {
   name: "DadosBasicos",
@@ -346,46 +348,7 @@ export default {
       textos: "getTextos",
       collapsesToShow: "getCollapsesToShow",
     }),
-
-    // statusCadUnico: {
-    //   get() {
-    //     return this.$store.state.statusCadUnico;
-    //   },
-    //   set(value) {
-    //     this.$store.commit("SetStatusCadUnico", value);
-    //   }
-    // },
-
-    // isRegular: {
-    //   get() {
-    //     return this.$store.isRegular;
-    //   },
-    //   set(newValue) {
-    //     this.$store.commit("changeIsRegular", newValue);
-    //   }
-    // },
-
-    // valorDebito: {
-    //   get() {
-    //     return this.$store.state.valorDebito;
-    //   },
-    //   set(value) {
-    //     this.$store.commit("setValorDebito", value);
-    //   },
-    // },
-    // valorDebitoExtenso: {
-    //   get() {
-    //     return this.$store.state.valorDebitoExtenso;
-    //   }
-    // },
-    // statusCadUnicoAtual: {
-    //   get() {
-    //     return this.$store.state.statusCadUnicoAtual;
-    //   },
-    //   set(value) {
-    //     this.$store.commit("setStatusCadUnicoAtual", value);
-    //   }
-    // },
+    
     origemApuracaoAtual: {
       get() {
         return this.$store.state.origemApuracaoAtual;
@@ -416,6 +379,7 @@ export default {
     );
   },
   components: {},
+  mixins:[Utils]
 };
 </script>
 
