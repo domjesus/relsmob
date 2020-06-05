@@ -316,7 +316,7 @@ export default {
       formData.append("valor", valor);
 
       fetch(
-        "http://localhost:80/relsmob/src/utilsBackEnd/classes/Extenso.php",
+        "https://teletrabalho.net/mob/utilsBackEnd/classes/Extenso.php",
         {
           method: "post",
           body: formData,
@@ -404,7 +404,7 @@ export default {
     valor.append("flag", "recurso");
 
     fetch(
-      "http://localhost:80/relsmob/src/utilsBackEnd/classes/RecuperaTexto.php",
+      "https://teletrabalho.net/mob/utilsBackEnd/classes/RecuperaTexto.php",
       {
         method: "post",
         body: valor,
