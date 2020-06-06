@@ -3,7 +3,7 @@
     <!-- {{collapsesToShow}} -->
     <div class="card">
       <div class="card-body">
-        <h4>Marque para exibir os textos do cabra Arriado</h4>
+        <h4>Marque para exibir os textos abaixo</h4>
         <input
           type="checkbox"
           @click="changeCollapsesToShow($event.target.name)"
@@ -302,13 +302,10 @@ export default {
       const formData = new FormData();
       formData.append("valor", valor);
 
-      fetch(
-        "http://localhost:80/relsmob/src/utilsBackEnd/classes/Extenso.php",
-        {
-          method: "post",
-          body: formData
-        }
-      ).then(resp => {
+      fetch("https://teletrabalho.net/mob/utilsBackEnd/classes/Extenso.php", {
+        method: "post",
+        body: formData
+      }).then(resp => {
         resp.json().then(retorno => {
           this.changeValorDebitoExtenso(retorno.valorExtenso);
           // console.log(retorno);
@@ -391,7 +388,7 @@ export default {
     valor.append("flag", "recurso");
 
     fetch(
-      "http://localhost:80/relsmob/src/utilsBackEnd/classes/RecuperaTexto.php",
+      "https://teletrabalho.net/mob/utilsBackEnd/classes/RecuperaTexto.php",
       {
         method: "post",
         body: valor
