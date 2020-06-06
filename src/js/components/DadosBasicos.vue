@@ -3,7 +3,7 @@
     <!-- {{collapsesToShow}} -->
     <div class="card">
       <div class="card-body">
-        <h4>Marque para exibir os textos</h4>
+        <h4>Marque para exibir os textos do cabra Arriado</h4>
         <input
           type="checkbox"
           @click="changeCollapsesToShow($event.target.name)"
@@ -45,9 +45,7 @@
         <div class="col">
           <div class="input-group mb-0">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="statusRegularidade"
-                >Marque para regular</span
-              >
+              <span class="input-group-text" id="statusRegularidade">Marque para regular</span>
               <label class="switch">
                 <input
                   type="checkbox"
@@ -62,9 +60,7 @@
 
         <div class="input-group mb-0 col">
           <div class="input-group-prepend">
-            <label class="input-group-text" for="inputGroupSelect01"
-              >Origem da Apuração:</label
-            >
+            <label class="input-group-text" for="inputGroupSelect01">Origem da Apuração:</label>
           </div>
           <select
             class="custom-select"
@@ -72,12 +68,7 @@
             name="origemApuracao"
             v-model="origemApuracaoAtual"
           >
-            <option
-              v-for="(origem, i) in origemApuracao"
-              :value="origem"
-              :key="i"
-              >{{ origem.nome }}</option
-            >
+            <option v-for="(origem, i) in origemApuracao" :value="origem" :key="i">{{ origem.nome }}</option>
           </select>
         </div>
       </div>
@@ -85,9 +76,7 @@
 
     <div class="input-group mb-0">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon1"
-          >Nome do(a) segurado(a)</span
-        >
+        <span class="input-group-text" id="basic-addon1">Nome do(a) segurado(a)</span>
       </div>
       <input
         type="text"
@@ -102,9 +91,7 @@
     <div class="row">
       <div class="col col-md-4 input-group mb-0">
         <div class="input-group-prepend">
-          <span class="input-group-text" id="spamdtAtuCadUnico"
-            >Atualização Cadúnico:</span
-          >
+          <span class="input-group-text" id="spamdtAtuCadUnico">Atualização Cadúnico:</span>
         </div>
         <input
           type="text"
@@ -123,9 +110,7 @@
       <div class="col">
         <div class="input-group mb-0">
           <div class="input-group-prepend">
-            <label class="input-group-text" for="inputGroupSelect02"
-              >Status CadÚnico:</label
-            >
+            <label class="input-group-text" for="inputGroupSelect02">Status CadÚnico:</label>
           </div>
           <select
             class="custom-select"
@@ -133,9 +118,11 @@
             name="cadUnico"
             @change="changeStatusCadUnicoAtual($event.target.value)"
           >
-            <option v-for="(cad, i) in statusCadUnico" :value="cad" :key="i">{{
+            <option v-for="(cad, i) in statusCadUnico" :value="cad" :key="i">
+              {{
               cad
-            }}</option>
+              }}
+            </option>
           </select>
         </div>
       </div>
@@ -195,7 +182,7 @@
           />
           <!-- <div :class="[{ 'active alert-danger': erroData }]" v-show="erroData">
             Data inválida!
-          </div> -->
+          </div>-->
         </div>
       </div>
       <!-- END DIV ROW -->
@@ -227,8 +214,8 @@ export default {
         thousands: ".",
         prefix: "R$ ",
         //suffix: " #",
-        precision: 2,
-      }, //END MONEY
+        precision: 2
+      } //END MONEY
     }; //END RETURN
   }, //END DATA
 
@@ -243,7 +230,7 @@ export default {
       "changePeriodoDebitoInicial",
       "changePeriodoDebitoFinal",
       "changeTextos",
-      "changeCollapsesToShow",
+      "changeCollapsesToShow"
     ]),
 
     validaData(e) {
@@ -262,7 +249,7 @@ export default {
         //   console.log(tooltip);
 
         createPopper(popcorn, tooltip, {
-          placement: "bottom",
+          placement: "bottom"
         });
 
         e.target.focus();
@@ -319,17 +306,17 @@ export default {
         "http://localhost:80/relsmob/src/utilsBackEnd/classes/Extenso.php",
         {
           method: "post",
-          body: formData,
+          body: formData
         }
-      ).then((resp) => {
-        resp.json().then((retorno) => {
+      ).then(resp => {
+        resp.json().then(retorno => {
           this.changeValorDebitoExtenso(retorno.valorExtenso);
           // console.log(retorno);
 
           // this.$store.commit("setValorDebitoExtenso", retorno.valorExtenso);
         });
       });
-    },
+    }
   },
   computed: {
     ...mapGetters({
@@ -344,7 +331,7 @@ export default {
       periodoDebitoInicial: "getPeriodoDebitoInicial",
       periodoDebitoFinal: "getPeriodoDebitoFinal",
       textos: "getTextos",
-      collapsesToShow: "getCollapsesToShow",
+      collapsesToShow: "getCollapsesToShow"
     }),
 
     // statusCadUnico: {
@@ -392,12 +379,12 @@ export default {
       },
       set(value) {
         this.$store.commit("setOrigemApuracaoAtual", value);
-      },
-    },
+      }
+    }
   },
   directives: {
     money: VMoney,
-    mask,
+    mask
   },
   created() {
     let valor = new FormData();
@@ -407,15 +394,15 @@ export default {
       "http://localhost:80/relsmob/src/utilsBackEnd/classes/RecuperaTexto.php",
       {
         method: "post",
-        body: valor,
+        body: valor
       }
-    ).then((resp) =>
-      resp.json().then((result) => {
+    ).then(resp =>
+      resp.json().then(result => {
         this.changeTextos(result);
       })
     );
   },
-  components: {},
+  components: {}
 };
 </script>
 
