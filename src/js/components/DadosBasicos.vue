@@ -3,7 +3,7 @@
     <!-- {{collapsesToShow}} -->
     <div class="card">
       <div class="card-body">
-        <h4>Marque para exibir os textos</h4>
+        <h4>Marque para exibir os textos. </h4>
         <input
           type="checkbox"
           @click="changeCollapsesToShow($event.target.name)"
