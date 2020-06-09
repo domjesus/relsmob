@@ -199,11 +199,11 @@
         </div>
       </div>
       <!-- END DIV ROW -->
-      {{testMixin()}}
+      <!-- {{testMixin()}} -->
     </div>
     <!-- END DIV DEBITO -->
 
-    <div id="tooltip" role="tooltip" data-popper-arrow v-show="erroData">
+    <div id="tooltipDtInv" role="tooltip" data-popper-arrow v-show="erroData">
       <p id="innerTooltip">Data incorreta!</p>
       <div id="arrow" data-popper-arrow></div>
     </div>    
@@ -216,7 +216,7 @@ import { mapGetters, mapActions } from "vuex";
 import { VMoney } from "v-money";
 import { mask } from "vue-the-mask";
 import { createPopper } from "@popperjs/core";
-import Utils from "./../../mixins/Utils.js"
+// import Utils from "./../../mixins/Utils.js"
 
 export default {
   name: "DadosBasicos",
@@ -260,11 +260,11 @@ export default {
 
         // console.log(popcorn);
 
-        const tooltip = document.querySelector("#tooltip");
+        const tooltip = document.querySelector("#tooltipDtInv");
         //   console.log(tooltip);
 
         createPopper(popcorn, tooltip, {
-          placement: "bottom",
+          placement: "top",
         });
 
         e.target.focus();
@@ -379,7 +379,7 @@ export default {
     );
   },
   components: {},
-  mixins:[Utils]
+  // mixins:[Utils]
 };
 </script>
 
@@ -451,7 +451,7 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-#tooltip {
+#tooltipDtInv {
   background-color: darkred;
   color: white;
   padding: 5px 10px;
@@ -475,18 +475,18 @@ input:checked + .slider:before {
   background: black;
 }
 
-#tooltip[data-popper-placement^="bottom"] > #arrow {
+#tooltipDtInv[data-popper-placement^="bottom"] > #arrow {
   top: -4px;
 }
 
-#tooltip[data-popper-placement^="left"] > #arrow {
+#tooltipDtInv[data-popper-placement^="left"] > #arrow {
   right: -4px;
 }
 
-#tooltip[data-popper-placement^="right"] > #arrow {
+#tooltipDtInv[data-popper-placement^="right"] > #arrow {
   left: -4px;
 }
-#tooltip[data-show] {
+#tooltipDtInv[data-show] {
   display: block;
 }
 </style>

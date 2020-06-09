@@ -1,13 +1,14 @@
 <template>
   <div>
     <div
-      class="debito" id="debito">O valor do débito apurado é de {{valorDebito }} - {{ valorDebitoExtenso}} referente ao período de {{ periodoDebitoInicial }} a {{periodoDebitoFinal}}.</div>
-    <button class="btn btn-primary" @click="addTexto('debito')">Tem Débito</button>
+      class="debito hide" id="debito">O valor do débito apurado é de {{valorDebito }} - {{ valorDebitoExtenso}} referente ao período de {{ periodoDebitoInicial }} a {{periodoDebitoFinal}}.</div>
+    <button class="btn btn-danger" @click="addTexto('debito')">Tem Débito</button>
 
     <br />
 
     <textarea rows="10" v-model="trataLinhas" id="txtOfRecurso"></textarea>
-    <input type="text" v-model="newtext" placeholder="new element" />
+    
+    <!-- <input type="text" v-model="newtext" placeholder="new element" /> -->
 
     <!-- <mob-new-element-text v-model="newtext" /> -->
     <copy-text copyFrom="txtOfRecurso" />
@@ -47,13 +48,19 @@ export default {
       localText: []
     };
   },
-  methods: {
-    digitou(e) {
-      console.log("Vc digitou" + e.target.value);
-    },
-    addTexto(idElemento) {
+  methods: {    
+    addTexto(field) {
       console.log;
-      let textoDebito = document.querySelector("#" + idElemento).innerHTML;
+      let textoDebito = document.querySelector("#" + field).innerHTML;
+
+      if(field == "debito"){
+        if(this.valorDebito == "" || this.periodoDebitoInicial == "" || this.periodoDebitoFinal == ""){
+          alert("Preencha o valor do débito, período inicial e final!");
+          return
+        }        
+      }
+
+
       this.localText.splice(2, 0, textoDebito);
     }
   },
@@ -72,4 +79,8 @@ textarea:focus {
 textarea {
   width: 90%;
 }
+
+.hide{
+  display:none
+  }
 </style>

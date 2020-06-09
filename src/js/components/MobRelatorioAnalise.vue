@@ -51,6 +51,18 @@ export default {
 
       if (this.camposJaAdicionados.indexOf(field) >= 0) return this.trataLinhas;
 
+      if(field == "debito"){
+        if(this.valorDebito == "" || this.periodoDebitoInicial == "" || this.periodoDebitoFinal == ""){
+          alert("Preencha o valor do débito, período inicial e final!");
+          return
+        }        
+      }
+
+      if(field == "st-cad-unico" && this.dtAtuCadUnico == ""){
+        alert("Data de atualização do CadÚnico não informado!");
+        return
+      }
+
       this.camposJaAdicionados.push(field);
       // console.log(this.camposJaAdicionados);
 
