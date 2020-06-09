@@ -68,44 +68,7 @@ export default {
 </script>
 
 <style scoped>
-#tooltip {
-  background-color: black;
-  color: white;
-  padding: 5px 10px;
-  border-radius: 4px;
-  font-size: 13px;
-  font-weight: bold;
-  display: none;
-}
 
-#arrow,
-#arrow::before {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  z-index: -1;
-}
-
-#arrow::before {
-  content: "";
-  transform: rotate(45deg);
-  background: black;
-}
-
-#tooltip[data-popper-placement^="bottom"] > #arrow {
-  top: -4px;
-}
-
-#tooltip[data-popper-placement^="left"] > #arrow {
-  right: -4px;
-}
-
-#tooltip[data-popper-placement^="right"] > #arrow {
-  left: -4px;
-}
-#tooltip[data-show] {
-  display: block;
-}
 input[type="text"]:focus {
   background-color: darksalmon;
 }

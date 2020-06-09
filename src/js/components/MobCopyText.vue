@@ -1,14 +1,12 @@
 <template>
 
     <div>        
-        <div id="tooltip" role="tooltip" data-popper-arrow :data-show="dataShow">
+        <div id="tooltip" role="tooltip" data-popper-arrow v-show="dataShow">
             <p id="innerTooltip">Copiado com sucesso!</p>
-            <div id="arrow" data-popper-arrow></div>
+            <div id="arrow" data-popper-arrow></div>            
         </div>
 
         <button class="btn btn-primary" @click="copyText(copyFrom)">Copiar</button>
-
-
 
     </div>
     
@@ -32,49 +30,43 @@ export default {
         }
     },
     methods:{
-      copyText(idElemento){     
+        copyText(idElemento){     
+        
+        let areaText = document.getElementById(idElemento);      
+
+        areaText.select();
+        document.execCommand("copy");
+
+        const popcorn = document.querySelector(`#${idElemento}`);   
+        // console.log(popcorn);      
+
+        const tooltip = document.querySelector("#tooltip");
       
-      let areaText = document.getElementById(idElemento);      
+        this.dataShow = true;
+      //   //   console.log(tooltip);
 
-      areaText.select();
-      document.execCommand("copy");
+        createPopper(popcorn, tooltip, {
+          placement: "bottom"
+        });
 
-      const popcorn = document.querySelector(`#${idElemento}`);   
-    //   console.log(popcorn);
-      
-
-      const tooltip = document.querySelector("#tooltip");
-    
-      this.dataShow = true;
-    //   //   console.log(tooltip);
-
-      createPopper(popcorn, tooltip, {
-        placement: "top"
-      });
-
-      setTimeout( () => this.escondeToolTip(),4000)
-    },
-
-    escondeToolTip() {
-      this.dataShow = false;
-    }
-
-    }
-
-    
+        setTimeout( () => this.escondeToolTip(),4000)
+      },
+      escondeToolTip() {
+        this.dataShow = false;
+      }
+    }    
 }
 </script>
 
 <style scoped>
 #tooltip {
-  background-color: brown;
+  background-color: darkcyan;
   color: white;
   padding: 5px 10px;
   border-radius: 4px;
   font-size: 13px;
   font-weight: bold;
-  width: 155px;
-  display: none;
+  width: 155px;  
 }
 
 #arrow,
