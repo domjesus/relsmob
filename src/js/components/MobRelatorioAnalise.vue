@@ -4,7 +4,7 @@
     <div class="suspenso hide">TEXTO DO NB SUSPENSO</div>
     <div
       class="debito hide"
-    >O valor do débito apurado é de {{valorDebito }} - {{ valorDebitoExtenso}} referente ao período de {{ periodoDebitoInicial }}a {{periodoDebitoFinal}}</div>
+    >O valor do débito apurado é de {{valorDebito }} - {{ valorDebitoExtenso}} referente ao período de {{ periodoDebitoInicial }} a {{periodoDebitoFinal}}</div>
 
     <div
       class="mantem hide"
@@ -21,13 +21,15 @@
       <button class="btn btn-danger" @click="copiaTexto($event, 'st-cad-unico')">Status CadÚnico</button>
     </div>
     <div class="texto">
-      <textarea rows="10" v-model="trataLinhas"></textarea>
+      <textarea rows="10" v-model="trataLinhas" id="txtRelAnalise"></textarea>
+      <copy-text copyFrom="txtRelAnalise" />
     </div>
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
+import CopyText from "./MobCopyText.vue"
 
 export default {
   name: "MobRelatorioAnalise",
@@ -50,7 +52,7 @@ export default {
       if (this.camposJaAdicionados.indexOf(field) >= 0) return this.trataLinhas;
 
       this.camposJaAdicionados.push(field);
-      console.log(this.camposJaAdicionados);
+      // console.log(this.camposJaAdicionados);
 
       this.textoTmp.splice(3, 0, texto);
       //   console.log(this.textos[0].cobranca);
@@ -74,7 +76,12 @@ export default {
       },
       set() {}
     }
+  },
+  components:{
+    CopyText
   }
+
+
 };
 </script>
 

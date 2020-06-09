@@ -5,8 +5,7 @@
       conteudo="Ofício de defesa"
       idCollapse="#collapseOficioDefesa"
       classeMostrar="collapse show"
-      idColl="collapseOficioDefesa"
-      v-show="collapsesToShow.indexOf('defesa')>=0"
+      idColl="collapseOficioDefesa"      
     >
       <oficio-defesa />
     </InnerAccordion>
@@ -17,7 +16,7 @@
       classeMostrar="collapse"
       aria-expanded="true"
       elemento="Análise Prévia"
-      v-show="collapsesToShow.indexOf('analiseprevia')>=0"
+      
     >
       <regular-component />
       <mob-irregular />
@@ -28,25 +27,16 @@
       conteudo="Relatório de Análise"
       idCollapse="#collapseAnalise"
       classeMostrar="collapse"
-      idColl="collapseAnalise"
-      v-show="collapsesToShow.indexOf('relatorioanalise')>=0"
+      idColl="collapseAnalise"      
     >
       <mob-relatorio-analise />
     </InnerAccordion>
 
-    <InnerAccordion
-      conteudo="Relatório Conclusivo"
-      idCollapse="#collapseRelConclusivo"
-      classeMostrar="collapse"
-      idColl="collapseRelConclusivo"
-      v-show="collapsesToShow.indexOf('conclusivo')>=0"
-    />
-    <InnerAccordion
+     <InnerAccordion
       conteudo="Ofício de Recurso"
       idCollapse="#collapseRelExtra"
       classeMostrar="collapse"
-      idColl="collapseRelExtra"
-      v-show="collapsesToShow.indexOf('recurso')>=0"
+      idColl="collapseRelExtra"      
     >
       <mob-oficio-recurso />
     </InnerAccordion>
@@ -72,7 +62,7 @@ export default {
     OficioDefesa
   },
   computed: {
-    ...mapGetters({ collapsesToShow: "getCollapsesToShow" })
+    // ...mapGetters({ collapsesToShow: "getCollapsesToShow" })
   }
 };
 </script>

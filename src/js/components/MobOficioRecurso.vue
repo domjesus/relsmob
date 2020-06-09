@@ -1,22 +1,22 @@
 <template>
   <div>
     <div
-      id="debito"
-      hidden
-    >O débito do segurado é de {{valorDebito}} - {{valorDebitoExtenso}} referente ao período que vai de {{periodoDebitoInicial}} a {{periodoDebitoFinal}}</div>
+      class="debito" id="debito">O valor do débito apurado é de {{valorDebito }} - {{ valorDebitoExtenso}} referente ao período de {{ periodoDebitoInicial }} a {{periodoDebitoFinal}}.</div>
     <button class="btn btn-primary" @click="addTexto('debito')">Tem Débito</button>
 
     <br />
 
-    <textarea rows="10" v-model="trataLinhas"></textarea>
+    <textarea rows="10" v-model="trataLinhas" id="txtOfRecurso"></textarea>
     <input type="text" v-model="newtext" placeholder="new element" />
 
-    <mob-new-element-text v-model="newtext" />
+    <!-- <mob-new-element-text v-model="newtext" /> -->
+    <copy-text copyFrom="txtOfRecurso" />
   </div>
 </template>
 
 <script>
 import MobNewElementText from "./MobNewElementText.vue";
+import CopyText from "./MobCopyText.vue";
 import { mapGetters } from "vuex";
 
 export default {
@@ -58,7 +58,9 @@ export default {
     }
   },
   components: {
-    MobNewElementText
+    MobNewElementText,
+    CopyText
+
   }
 };
 </script>

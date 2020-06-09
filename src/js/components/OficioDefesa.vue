@@ -2,7 +2,8 @@
   <div>
     <!-- <ul v-for="(texto,i) in textos" :key="i">{{texto}}</ul> -->
 
-    <textarea v-model="trataLinhas" rows="10"></textarea>
+    <textarea v-model="trataLinhas" rows="10" id="textoDefesa"></textarea>
+    
 
     <!-- <div v-show="textos.length > 1">
       <!-- <h2>Só mostra se for maior que um</h2>
@@ -13,16 +14,19 @@
     <!-- <div v-for="texto in textos" v-show="textos.length > 1">
       <button class="btn btn-primary" @click="selectModel(texto.id)">Modelo {{texto.id}}</button>
     </div>-->
+    <copy-text copyFrom="textoDefesa" />
   </div>
 </template>
 
 <script>
 import { mapActions, mapGetters } from "vuex";
+import CopyText from "./MobCopyText.vue";
+
 export default {
   name: "OficioDefesa",
   data() {
     return {
-      textoTmp: []
+      textoTmp: [],      
     };
   },
   computed: {
@@ -41,6 +45,9 @@ export default {
       },
       set() {}
     }
+  },
+  components:{
+    CopyText
   }
 };
 </script>

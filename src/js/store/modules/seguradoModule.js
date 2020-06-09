@@ -9,7 +9,7 @@ export default {
   },
   mutations: {
     setNomeSegurado(state, newValue) {
-      state.nomeSegurado = newValue;
+      state.nomeSegurado = newValue.toUpperCase();
     },
   },
   actions: {

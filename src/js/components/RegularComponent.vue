@@ -1,5 +1,5 @@
 <template>
-  <div v-show="isRegular" @mouseleave="escondeToolTip">
+  <div v-show="isRegular">
     <h4>Análise regular</h4>
     <input
       type="text"
@@ -11,7 +11,7 @@
 
     <!-- <textarea rows="10" v-model="trataLinhas"></textarea> -->
 
-    <textarea rows="10" id="textoAnalise" title="Analise regular">
+    <textarea rows="10" id="txtAnaliseReg" title="Analise regular">
                       1.      Trata-se de apuração de indícios de irregularidade detectados em batimento contínuo de informações sobre a renda per capita do grupo familiar do Benefício de Prestação Continuada, conforme avaliação de que trata o art. 11 da Lei n.º 10.666, de 8 de maio de 2003. {{
         origemApuracaoAtual.nome
       }}
@@ -32,57 +32,23 @@
                       5.      Diante do exposto, caberá emissão do ofício de regularidade ao interessado, caso tenha sido informado da revisão em momento anterior.
                       
                       6.      Por fim, propomos o arquivamento do processo, sem mais diligências.                      
-    </textarea>
-    <div id="tooltip" role="tooltip" data-popper-arrow :data-show="dataShow">
-      <p id="innerTooltip">Copiado com sucesso!</p>
-      <div id="arrow" data-popper-arrow></div>
-    </div>
-    <br />
-
-    <button
-      type="button"
-      class="btn btn-primary"
-      name="btnCopia"
-      id="btnCopia"
-      @click="copiatexto('textoAnalise')"
-    >Copiar texto</button>
+    </textarea>    
+    <copy-text copyFrom="txtAnaliseReg" />    
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
-import { createPopper } from "@popperjs/core";
+import CopyText from "./MobCopyText.vue"
 
 export default {
   name: "RegularComponent",
 
   data() {
-    return {
-      dataShow: false,
+    return {      
       textoComplementar: ""
     };
-  },
-  methods: {
-    copiatexto(idElemento) {
-      let textoCopiado = document.getElementById(idElemento);
-
-      textoCopiado.select();
-      document.execCommand("copy");
-
-      const popcorn = document.querySelector(`#${idElemento}`);
-
-      const tooltip = document.querySelector("#tooltip");
-      this.dataShow = true;
-      //   console.log(tooltip);
-
-      createPopper(popcorn, tooltip, {
-        placement: "bottom"
-      });
-    },
-    escondeToolTip() {
-      this.dataShow = false;
-    }
-  },
+  },  
   computed: {
     ...mapGetters({
       nomeSegurado: "getNomeSegurado",
@@ -107,49 +73,14 @@ export default {
     origemApuracaoAtual() {
       return this.$store.state.origemApuracaoAtual;
     }
+  },
+  components:{
+    CopyText
   }
 };
 </script>
 
 <style scoped>
-#tooltip {
-  background-color: black;
-  color: white;
-  padding: 5px 10px;
-  border-radius: 4px;
-  font-size: 13px;
-  font-weight: bold;
-  display: none;
-}
-
-#arrow,
-#arrow::before {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  z-index: -1;
-}
-
-#arrow::before {
-  content: "";
-  transform: rotate(45deg);
-  background: black;
-}
-
-#tooltip[data-popper-placement^="bottom"] > #arrow {
-  top: -4px;
-}
-
-#tooltip[data-popper-placement^="left"] > #arrow {
-  right: -4px;
-}
-
-#tooltip[data-popper-placement^="right"] > #arrow {
-  left: -4px;
-}
-#tooltip[data-show] {
-  display: block;
-}
 input[type="text"]:focus {
   background-color: darksalmon;
 }

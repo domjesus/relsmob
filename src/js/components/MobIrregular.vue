@@ -1,5 +1,5 @@
 <template>
-  <div v-show="!isRegular" @mouseleave="escondeToolTip">
+  <div v-show="!isRegular" >
     <h4>Análise irregular</h4>
     <input
       type="text"
@@ -9,7 +9,7 @@
       hidden
     />
 
-    <textarea rows="10" id="textoAnalise" title="Analise Irregular">
+    <textarea rows="10" id="txtAnaliseIrreg" title="Analise Irregular">
                       1.      Trata-se de apuração de indícios de irregularidade detectados em batimento contínuo de informações sobre a renda per capita do grupo familiar do Benefício de Prestação Continuada, conforme avaliação de que trata o art. 11 da Lei n.º 10.666, de 8 de maio de 2003. {{
         origemApuracaoAtual.nome
       }}
@@ -24,25 +24,15 @@
                       
                      4.      Em face ao exposto, caberá emissão de Ofício de Defesa a(o) interessado(a), conforme artigo 47, §1º, do Decreto n.º 6.214/2007.                    
                   </textarea>
-    <div id="tooltip" role="tooltip" data-popper-arrow :data-show="dataShow">
-      <p id="innerTooltip">Copiado com sucesso!</p>
-      <div id="arrow" data-popper-arrow></div>
-    </div>
-    <br />
+  <copy-text copyFrom="txtAnaliseIrreg" />    
 
-    <button
-      type="button"
-      class="btn btn-primary"
-      name="btnCopia"
-      id="btnCopia"
-      @click="copiatexto('textoAnalise')"
-    >Copiar texto</button>
+    
   </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from "vuex";
-import { createPopper } from "@popperjs/core";
+import CopyText from "./MobCopyText.vue"
 
 export default {
   name: "IrregularComponent",
@@ -55,25 +45,6 @@ export default {
   },
   methods: {
     ...mapActions(["changeDtAtuCadUnico"]),
-    copiatexto(idElemento) {
-      let textoCopiado = document.getElementById(idElemento);
-
-      textoCopiado.select();
-      document.execCommand("copy");
-
-      const popcorn = document.querySelector(`#${idElemento}`);
-
-      const tooltip = document.querySelector("#tooltip");
-      this.dataShow = true;
-      //   console.log(tooltip);
-
-      createPopper(popcorn, tooltip, {
-        placement: "bottom"
-      });
-    },
-    escondeToolTip() {
-      this.dataShow = false;
-    }
   },
   computed: {
     //...mapState(["statusCadUnicoAtual"]),
@@ -88,7 +59,11 @@ export default {
     origemApuracaoAtual() {
       return this.$store.state.origemApuracaoAtual;
     }
+  },
+  components:{
+    CopyText
   }
+
 };
 </script>
 
