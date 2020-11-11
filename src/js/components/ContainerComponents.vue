@@ -1,5 +1,5 @@
 <template>
-  <div class="card ml-5">
+  <div class="card ml-5 mr-5">
     <RegularModalComponent show @changeModal="changeModal('statusCadUnico')" />
     <CadUnicoStatusModalComponent
       :show="modalToShow == 'statusCadUnico'"
@@ -9,21 +9,18 @@
     <DadosSeguradoModalComponent :show="modalToShow == 'dadosSegurado'" />
     <!-- {{collapsesToShow}} -->
     <div>
-      <b-tabs content-class="mt-3">
+      <b-tabs content-class="mt-3" pills>
         <b-tab title="Dados Básicos" active>
           <DadosBasicos />
         </b-tab>
 
         <b-tab title="AnalisePrevia">
-          <p>Análise Prévia</p>
           <AnalisePrevia />
         </b-tab>
         <b-tab title="Ofício de defesa">
-          <h3>Ofício de defesa</h3>
           <OficioDefesa />
         </b-tab>
         <b-tab title="Análise de defesa">
-          <h3>Análise de defesa</h3>
           <AnaliseDefesa />
         </b-tab>
 
@@ -31,8 +28,6 @@
           <h3>Ofício de recurso</h3>
           <OficioRecurso />
         </b-tab>
-
-        <b-tab title="Disabled" disabled><p>I'm a disabled tab!</p></b-tab>
       </b-tabs>
     </div>
 

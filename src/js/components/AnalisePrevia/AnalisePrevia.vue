@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h4>Análise Prévia - ha dois componentes aki, soh mudar o flag</h4>
     <AnalisePreviaIrregular v-show="!isRegular" />
     <AnalisePreviaRegular v-show="isRegular" />
   </div>

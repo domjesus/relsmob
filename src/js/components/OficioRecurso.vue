@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h4>Aki vai o conteudo do oficio de recurso</h4>
+    <h4>Em desenvolvimento...</h4>
     <textarea rows="10"></textarea>
   </div>
 </template>

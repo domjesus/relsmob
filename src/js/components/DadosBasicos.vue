@@ -1,7 +1,6 @@
 <template>
-  <div>
-    <h3>Dados Básicos</h3>
-    <div class="input-group mb-0">
+  <div class="ml-5 pr-5 mr-5 container-fluid">
+    <div class="input-group">
       <div class="input-group-prepend">
         <label class="input-group-text" for="inputGroupSelect01"
           >Origem da Apuração:</label
@@ -18,7 +17,8 @@
         </option>
       </select>
     </div>
-    <div class="input-group mb-0">
+
+    <div class="input-group mt-3">
       <div class="input-group-prepend">
         <span class="input-group-text" id="basic-addon1"
           >Nome do(a) segurado(a)</span
@@ -35,7 +35,7 @@
       />
     </div>
 
-    <div class="row">
+    <div class="row mt-3">
       <div class="col col-md-4 input-group mb-0">
         <div class="input-group-prepend">
           <span class="input-group-text" id="spamdtAtuCadUnico"
@@ -57,7 +57,7 @@
       </div>
       <!-- END COL -->
       <div class="col">
-        <div class="input-group mb-0">
+        <div class="input-group">
           <div class="input-group-prepend">
             <label class="input-group-text" for="inputGroupSelect02"
               >Status CadÚnico:</label
@@ -80,51 +80,6 @@
           </select>
         </div>
       </div>
-      <DebitoComponent />
-
-      <div class="row ml-5">
-        <input
-          type="text"
-          v-model="membroIrregularidade"
-          placeholder="Membro Irregularidade"
-          @keyup="setObjIrregularidade"
-          v-b-popover.hover.bottom="{
-            variant: 'info',
-            content:
-              'Digite o nome do membro do GF ao qual se refere a irregularidade. Sairá no Ofício de Defesa (item 2).',
-          }"
-          title="Membro do GF origem da irregularidade"
-        />
-        <input
-          type="text"
-          placeholder="valor irregularidade"
-          v-model="vlrIrregularidade"
-          v-money="money"
-          @keyup="setObjIrregularidade"
-          v-b-popover.hover.bottom="{
-            variant: 'info',
-            content:
-              'Digite o valor da renda do membro do GF ao qual se refere a irregularidade. Sairá no Ofício de Defesa (item 2).',
-          }"
-          title="Renda do membro do GF"
-          class="mr-5"
-        />
-      </div>
-
-      <br />
-
-      <input
-        type="checkbox"
-        @click="setCheckObjIrregularidade"
-        v-b-popover.hover.bottom="{
-          variant: 'info',
-          content:
-            'Marque caso queira que saia no texto solicitação para o segurado apresentar sentença que concedeu o benefício.',
-        }"
-        title="Processo concedido judicialmente"
-      />Concessão judicial
-
-      <br />
 
       <textarea
         rows="6"
@@ -144,6 +99,55 @@
         }}
     </textarea
       >
+    </div>
+
+    <div class="row mt-3">
+      <DebitoComponent />
+    </div>
+
+    <div class="row">
+      <div class="col col-md-6">
+        <input
+          type="text"
+          v-model="membroIrregularidade"
+          placeholder="Membro Irregularidade"
+          @keyup="setObjIrregularidade"
+          size="50"
+          class="form-control"
+          v-b-popover.hover.bottom="{
+            variant: 'info',
+            content:
+              'Digite o nome do membro do GF ao qual se refere a irregularidade. Sairá no Ofício de Defesa (item 2).',
+          }"
+          title="Membro do GF origem da irregularidade"
+        />
+      </div>
+      <div class="col col-md-2">
+        <input
+          type="text"
+          placeholder="valor irregularidade"
+          v-model="vlrIrregularidade"
+          v-money="money"
+          @keyup="setObjIrregularidade"
+          class="form-control"
+          v-b-popover.hover.bottom="{
+            variant: 'info',
+            content:
+              'Digite o valor da renda do membro do GF ao qual se refere a irregularidade. Sairá no Ofício de Defesa (item 2).',
+          }"
+          title="Renda do membro do GF"
+        />
+      </div>
+      <input
+        type="checkbox"
+        @click="setCheckObjIrregularidade"
+        v-b-popover.hover.bottom="{
+          variant: 'info',
+          content:
+            'Marque caso queira que saia no texto solicitação para o segurado apresentar sentença que concedeu o benefício.',
+        }"
+        title="Processo concedido judicialmente"
+      />Concessão judicial
     </div>
   </div>
   <!-- <p>Aki vai o conteudo dos dados basicos</p>
