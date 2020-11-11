@@ -68,6 +68,7 @@ import { VMoney } from "v-money";
 import { mask } from "vue-the-mask";
 import { validaData } from "./../functions/utils";
 import { mapActions, mapGetters } from "vuex";
+import { dev } from "./../functions/auxiliarInterno";
 
 export default {
   name: "DebitoComponent",
@@ -109,8 +110,13 @@ export default {
     converteMoeda(valor) {
       const formData = new FormData();
       formData.append("valor", valor);
+      const url = "";
 
-      fetch("http://localhost/relsmob/src/utilsBackEnd/classes/Extenso.php", {
+      if (dev)
+        url = "http://localhost/relsmob/src/utilsBackEnd/classes/Extenso.php";
+      else url = "/ajax/Extenso.php";
+
+      fetch(url, {
         method: "post",
         body: formData,
       }).then((resp) => {

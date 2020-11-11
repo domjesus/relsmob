@@ -3,11 +3,11 @@ const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const path = require("path");
 
 module.exports = {
-  mode: "development",
+  mode: "production",
   entry: "./src/main.js",
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js",
+    filename: "bundle." + Date.now() + ".js",
   },
   module: {
     rules: [
