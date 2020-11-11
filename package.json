@@ -4,6 +4,7 @@
   "description": "relatorios mob",
   "main": "main.js",
   "dependencies": {
+    "bootstrap": "^4.5.3",
     "bootstrap-vue": "^2.19.0"
   },
   "devDependencies": {
@@ -26,7 +27,7 @@
   },
   "scripts": {
     "serve": "webpack-dev-server --mode development --watch --progress",
-    "clean":" (node cleanDist.js)",
+    "clean": " (node cleanDist.js)",
     "build": "(npm run clean) && webpack --config webpack.config.js --mode production"
   },
   "author": "wcs",

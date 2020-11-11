@@ -14,6 +14,12 @@
             class="form-control"
             @keyup="workInValorDebito($event.target.value)"
             v-money="money"
+            v-b-popover.hover.bottom="{
+              variant: 'primary',
+              content:
+                'Digite o valor do débito. Esta informação sairá com o valor extenso convertido no ofício de defesa (item 5)/análise/recurso. Informe também o período inicial e final do débito.',
+            }"
+            title="Débito"
           />
         </div>
 
@@ -32,6 +38,8 @@
             @keyup="changePeriodoDebitoInicial($event.target.value)"
             v-mask="'##/##/####'"
             @blur="validaData"
+            v-b-tooltip.bottom.v-info
+            title="Período inicial do débito"
           />
         </div>
 
@@ -50,6 +58,8 @@
             @keyup="changePeriodoDebitoFinal($event.target.value)"
             v-mask="'##/##/####'"
             @blur="validaData"
+            v-b-tooltip.bottom.v-info
+            title="Período final do débito"
           />
           <!-- <div :class="[{ 'active alert-danger': erroData }]" v-show="erroData">
             Data inválida!
@@ -98,7 +108,7 @@ export default {
       this.erroData = validaData(data);
 
       if (this.erroData) {
-        alert("erro na data!");
+        // alert("erro na data!");
       }
     },
 

@@ -88,6 +88,12 @@
           v-model="membroIrregularidade"
           placeholder="Membro Irregularidade"
           @keyup="setObjIrregularidade"
+          v-b-popover.hover.bottom="{
+            variant: 'info',
+            content:
+              'Digite o nome do membro do GF ao qual se refere a irregularidade. Sairá no Ofício de Defesa (item 2).',
+          }"
+          title="Membro do GF origem da irregularidade"
         />
         <input
           type="text"
@@ -95,16 +101,31 @@
           v-model="vlrIrregularidade"
           v-money="money"
           @keyup="setObjIrregularidade"
+          v-b-popover.hover.bottom="{
+            variant: 'info',
+            content:
+              'Digite o valor da renda do membro do GF ao qual se refere a irregularidade. Sairá no Ofício de Defesa (item 2).',
+          }"
+          title="Renda do membro do GF"
           class="mr-5"
         />
       </div>
 
       <br />
 
-      <input type="checkbox" @click="setCheckObjIrregularidade" />Concessão
-      judicial
+      <input
+        type="checkbox"
+        @click="setCheckObjIrregularidade"
+        v-b-popover.hover.bottom="{
+          variant: 'info',
+          content:
+            'Marque caso queira que saia no texto solicitação para o segurado apresentar sentença que concedeu o benefício.',
+        }"
+        title="Processo concedido judicialmente"
+      />Concessão judicial
 
       <br />
+
       <textarea
         rows="6"
         id="txt-obj-irregularidade"
@@ -112,6 +133,7 @@
         placeholder="Texto objeto da irregularidade"
         style="width: 90%"
         class="ml-5 mt-5"
+        hidden
       >
     A renda que o(a) Sr(a) {{
           membroIrregularidade.toUpperCase()
@@ -144,6 +166,7 @@ import { mask } from "vue-the-mask";
 import { VMoney } from "v-money";
 import { validaData } from "./../functions/utils";
 import { mapGetters, mapActions } from "vuex";
+// import { VBTooltip } from "bootstrap-vue";
 
 export default {
   name: "DadosBasicos",
@@ -223,11 +246,12 @@ export default {
 
       this.changeObjIrregularidade(txtObjIrregularidade);
 
-      console.log(txtObjIrregularidade);
+      // console.log(txtObjIrregularidade);
     },
 
     callValidaData(data) {
-      if (!validaData(data)) alert("data errada!");
+      //AJUSTAR VALIDACAO DA DATA
+      // if (!validaData(data)) alert("data errada!");
     },
   },
   components: {
@@ -236,6 +260,7 @@ export default {
   directives: {
     money: VMoney,
     mask,
+    // BTooltip: VBTooltip,
   },
 };
 </script>
