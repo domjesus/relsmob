@@ -1,14 +1,14 @@
 <template>
   <div>
-    <dados-basicos />
-    <card-accordion />
+    <ContainerComponents />
+    <!-- <card-accordion /> -->
   </div>
 </template>
 
 <script>
-import DadosBasicos from "./js/components/DadosBasicos.vue";
-import OficioDefesa from "./js/components/OficioDefesa.vue";
-import CardAccordion from "./js/components/CardAccordion.vue";
+import ContainerComponents from "./js/components/ContainerComponents.vue";
+// import OficioDefesa from "./js/components/OficioDefesa.vue";
+// import CardAccordion from "./js/components/CardAccordion.vue";
 
 export default {
   name: "App",
@@ -16,12 +16,12 @@ export default {
     return {};
   },
   components: {
-    DadosBasicos,
-    OficioDefesa,
-    CardAccordion
+    ContainerComponents,
+    // OficioDefesa,
+    // CardAccordion,
   },
   created() {
     // console.log("App Component just created and atualized...");
-  }
+  },
 };
 </script>

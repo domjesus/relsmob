@@ -1,28 +1,16 @@
 <template>
   <div>
-    <textarea rows="10" v-model="trataLinhas"></textarea>
+    <h4>Aki vai o conteudo do oficio de recurso</h4>
+    <textarea rows="10"></textarea>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters } from "vuex";
 export default {
   name: "OficioDefesa",
-  data() {
-    return {};
-  },
   computed: {
-    ...mapGetters({textos:"getTextos"})
-    )
-    trataLinhas:{
-      get(){
-        if (this.textos) {
-          this.textos.forEach((item, i) => (linhas += `${item} \n\n`));
-          return linhas;
-        }
-      },
-      set(){}      
-    }
-  }
+    ...mapGetters({ textos: "getTextos" }),
+  },
 };
 </script>

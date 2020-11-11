@@ -6,7 +6,7 @@
       idCollapse="#collapseOficioDefesa"
       classeMostrar="collapse show"
       idColl="collapseOficioDefesa"
-      v-show="collapsesToShow.indexOf('defesa')>=0"
+      v-show="collapsesToShow.indexOf('defesa') >= 0"
     >
       <oficio-defesa />
     </InnerAccordion>
@@ -17,10 +17,9 @@
       classeMostrar="collapse"
       aria-expanded="true"
       elemento="Análise Prévia"
-      v-show="collapsesToShow.indexOf('analiseprevia')>=0"
+      v-show="collapsesToShow.indexOf('analiseprevia') >= 0"
     >
       <regular-component />
-      <mob-irregular />
       <!-- ADICIONADO O COMPONENTE POR MEIO DE UM SLOT, O QUAL É RECEBIDO NO INNERACCORCION -->
     </InnerAccordion>
 
@@ -29,7 +28,7 @@
       idCollapse="#collapseAnalise"
       classeMostrar="collapse"
       idColl="collapseAnalise"
-      v-show="collapsesToShow.indexOf('relatorioanalise')>=0"
+      v-show="collapsesToShow.indexOf('relatorioanalise') >= 0"
     >
       <mob-relatorio-analise />
     </InnerAccordion>
@@ -39,14 +38,14 @@
       idCollapse="#collapseRelConclusivo"
       classeMostrar="collapse"
       idColl="collapseRelConclusivo"
-      v-show="collapsesToShow.indexOf('conclusivo')>=0"
+      v-show="collapsesToShow.indexOf('conclusivo') >= 0"
     />
     <InnerAccordion
       conteudo="Ofício de Recurso"
       idCollapse="#collapseRelExtra"
       classeMostrar="collapse"
       idColl="collapseRelExtra"
-      v-show="collapsesToShow.indexOf('recurso')>=0"
+      v-show="collapsesToShow.indexOf('recurso') >= 0"
     >
       <mob-oficio-recurso />
     </InnerAccordion>
@@ -56,7 +55,7 @@
 <script>
 import InnerAccordion from "./InnerAccordion.vue";
 import RegularComponent from "./RegularComponent.vue";
-import MobIrregular from "./MobIrregular.vue";
+import AnalisePrevia from "./AnalisePrevia/AnalisePrevia.vue";
 import MobRelatorioAnalise from "./MobRelatorioAnalise.vue";
 import MobOficioRecurso from "./MobOficioRecurso.vue";
 import OficioDefesa from "./OficioDefesa.vue";
@@ -66,13 +65,13 @@ export default {
   components: {
     InnerAccordion,
     RegularComponent,
-    MobIrregular,
+    AnalisePrevia,
     MobRelatorioAnalise,
     MobOficioRecurso,
-    OficioDefesa
+    OficioDefesa,
   },
   computed: {
-    ...mapGetters({ collapsesToShow: "getCollapsesToShow" })
-  }
+    ...mapGetters({ collapsesToShow: "getCollapsesToShow" }),
+  },
 };
 </script>

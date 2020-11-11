@@ -1,6 +1,6 @@
 <template>
-  <div v-show="!isRegular" @mouseleave="escondeToolTip">
-    <h4>Análise irregular</h4>
+  <div @mouseleave="escondeToolTip">
+    <h4>Análise Regular</h4>
     <input
       type="text"
       class="form-control"
@@ -15,15 +15,16 @@
       }}
 
                       2.      Foi identificado que a renda do grupo familiar do(a) titular, Sr(a). {{
-        nomeSegurado
+        nomeSegurado.toUpperCase()
       }}, do benefício assistencial em análise, contraria o disposto no artigo 20, § 3º, da Lei n.º 8.742/1993, concomitante com o artigo 3º, inciso IV, do Decreto n.º 6.214/2007.
                       
                       3.     Em relação ao Cadastro Único, requisito para manutenção do benefício objeto desta apuração, conforme disposto nos artigos 12 e 13 do Decreto n.º 6.214/2007, observa-se que o(a) interessado(a) possui o CadÚnico {{
         statusCadUnicoAtual
-      }} e a última atualização foi em {{ dtAtuCadUnico }}.       
+      }}. {{ trataCadUnico }}     
                       
                      4.      Em face ao exposto, caberá emissão de Ofício de Defesa a(o) interessado(a), conforme artigo 47, §1º, do Decreto n.º 6.214/2007.                    
-                  </textarea>
+                  </textarea
+    >
     <div id="tooltip" role="tooltip" data-popper-arrow :data-show="dataShow">
       <p id="innerTooltip">Copiado com sucesso!</p>
       <div id="arrow" data-popper-arrow></div>
@@ -36,7 +37,9 @@
       name="btnCopia"
       id="btnCopia"
       @click="copiatexto('textoAnalise')"
-    >Copiar texto</button>
+    >
+      Copiar texto
+    </button>
   </div>
 </template>
 
@@ -45,12 +48,12 @@ import { mapGetters, mapActions } from "vuex";
 import { createPopper } from "@popperjs/core";
 
 export default {
-  name: "IrregularComponent",
+  name: "AnalisePreviaIrregular",
 
   data() {
     return {
       dataShow: false,
-      textoComplementar: ""
+      textoComplementar: "",
     };
   },
   methods: {
@@ -68,12 +71,12 @@ export default {
       //   console.log(tooltip);
 
       createPopper(popcorn, tooltip, {
-        placement: "bottom"
+        placement: "bottom",
       });
     },
     escondeToolTip() {
       this.dataShow = false;
-    }
+    },
   },
   computed: {
     //...mapState(["statusCadUnicoAtual"]),
@@ -82,13 +85,19 @@ export default {
       dtAtuCadUnico: "getDtAtuCadUnico",
       isRegular: "getIsRegular",
       statusCad: "getStatusCadUnico",
-      statusCadUnicoAtual: "getStatusCadUnicoAtual"
+      statusCadUnicoAtual: "getStatusCadUnicoAtual",
     }),
+
+    trataCadUnico() {
+      return this.dtAtuCadUnico.length > 0
+        ? ` A última atualização do cadastro foi em ${this.dtAtuCadUnico}.`
+        : "";
+    },
 
     origemApuracaoAtual() {
       return this.$store.state.origemApuracaoAtual;
-    }
-  }
+    },
+  },
 };
 </script>
 

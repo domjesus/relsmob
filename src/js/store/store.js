@@ -9,6 +9,7 @@ import regularidadeModule from "./modules/regularidadeModule";
 import debitoModule from "./modules/debitoModule";
 import textosModule from "./modules/textosModule";
 import appOptions from "./modules/appOptions";
+import irregularidadeModule from "./modules/irregularidadeModule";
 
 export default new Vuex.Store({
   modules: {
@@ -18,11 +19,12 @@ export default new Vuex.Store({
     debitoModule,
     textosModule,
     appOptions,
+    irregularidadeModule,
   },
   state: {
     origemApuracao: [
       {
-        nome: "Trata-se de superação de renda da NT 20.",
+        nome: "Trata-se de superação de renda da NT 20/2018/MDS.",
       },
       {
         nome: "Trata-se de superação de renda da NT 01/2020.",
