@@ -210,11 +210,10 @@ export default {
       if (e.target.checked) {
         this.judicial =
           "Solicitamos apresentar ação judicial que concedeu o benefício.";
-          this.$store.dispatch('changeJudicial',this.judicial);
+        this.$store.dispatch("changeJudicial", this.judicial);
       } else {
-
         this.judicial = "";
-           this.$store.dispatch('changeJudicial',this.judicial);
+        this.$store.dispatch("changeJudicial", this.judicial);
       }
     },
     setObjIrregularidade() {
