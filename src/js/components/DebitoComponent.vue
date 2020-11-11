@@ -110,7 +110,7 @@ export default {
     converteMoeda(valor) {
       const formData = new FormData();
       formData.append("valor", valor);
-      const url = "";
+      let url = "";
 
       if (dev)
         url = "http://localhost/relsmob/src/utilsBackEnd/classes/Extenso.php";
