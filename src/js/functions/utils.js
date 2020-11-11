@@ -22,4 +22,12 @@ function validaData(data) {
   return false; // se inválida :(
 }
 
-export { validaData };
+function copyTextById(id) {
+  const txtAnalise = document.getElementById(id);
+
+  txtAnalise.select();
+
+  return document.execCommand("copy");
+}
+
+export { validaData, copyTextById };

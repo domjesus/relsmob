@@ -3,7 +3,7 @@
     <!-- <ul v-for="(texto,i) in textos" :key="i">{{texto}}</ul> -->
 
     <!-- <textarea v-model="trataLinhas" rows="10"></textarea> -->
-    <textarea rows="10">
+    <textarea rows="10" id="textoOficioDefesa">
 1.      Após avaliação de que trata o art. 11 da Lei n.º 10.666, de 8 de maio de 2003, foi detectada possível irregularidade na manutenção do seu benefício, identificando, por meio de batimento de dados contínuos, que a renda per capita do grupo familiar do Benefício de Prestação Continuada contraria o contido no art. 20, § 3º, da Lei n.º 8.742/93, concomitante com o artigo 3º, inciso IV, do Decreto n.º 6.214/2007.
 2. {{ objetoDaIrregularidade.trim() }} {{ judicial }}
 3.      Desta maneira, em respeito aos princípios do contraditório e da ampla defesa, facultamos o prazo de 30 (trinta) dias a V.Sa., a contar do recebimento desta correspondência, para apresentar defesa, provas e documentos que demonstrem a regularidade do benefício.
@@ -19,17 +19,47 @@ c) fraldas descartáveis: comprovação do valor mensal gasto; d) consultas com 
 6.      A defesa poderá ser apresentada pelo site https://meu.inss.gov.br/ ou aplicativo MeuINSS ou, em caso de atendimento presencial para a apresentação da defesa, é necessário o prévio agendamento do serviço "Apresentar Defesa - MOB". O agendamento poderá ser realizado pelo telefone 135, de segunda-feira a sábado, das 7h às 22h (horário de Brasília), ou pela internet no site gov.br/meuinss.
 7.      Comunicamos que o dossiê eletrônico relativo ao assunto se encontra disponível em gov.br/meuinss.</textarea
     >
+    <br />
+    <button
+      type="button"
+      class="btn btn-primary"
+      name="btnCopia"
+      id="btnCopia"
+      @click="copiatexto('textoOficioDefesa')"
+    >
+      Copiar texto
+    </button>
   </div>
 </template>
 
 <script>
 import { mapActions, mapGetters } from "vuex";
+import { copyTextById } from "./../functions/utils";
+
 export default {
   name: "OficioDefesa",
   data() {
     return {
       textoTmp: [],
     };
+  },
+  methods: {
+    copiatexto(idElemento) {
+      try {
+        if (copyTextById(idElemento))
+          this.$bvToast.toast(`Copiado texto com sucesso!`, {
+            title: "Deu certo!",
+            autoHideDelay: 3000,
+            variant: "success",
+          });
+      } catch (error) {
+        this.$bvToast.toast(`Copiado texto com sucesso!`, {
+          title: "Deu certo!",
+          autoHideDelay: 3000,
+          variant: "danger",
+        });
+      }
+    },
   },
   computed: {
     ...mapGetters({
@@ -41,25 +71,25 @@ export default {
       valorDebitoExtenso: "getValorDebitoExtenso",
       judicial: "getJudicial",
     }),
-    trataLinhas: {
-      get() {
-        let linhas = "";
-        this.textoTmp = this.textos.defesa;
+    // trataLinhas: {
+    //   get() {
+    //     let linhas = "";
+    //     this.textoTmp = this.textos.defesa;
 
-        // console.log(this.textoTmp);
+    //     // console.log(this.textoTmp);
 
-        if (this.textoTmp) {
-          this.textoTmp.forEach((item, i) => {
-            if (i == 2) linhas += "--|--\n";
-            linhas += `${item} \n`;
-            // else
-          });
+    //     if (this.textoTmp) {
+    //       this.textoTmp.forEach((item, i) => {
+    //         if (i == 2) linhas += "--|--\n";
+    //         linhas += `${item} \n`;
+    //         // else
+    //       });
 
-          return linhas;
-        }
-      },
-      set() {},
-    },
+    //       return linhas;
+    //     }
+    //   },
+    //   set() {},
+    // },
   },
 };
 </script>
