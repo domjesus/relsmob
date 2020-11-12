@@ -41,7 +41,8 @@ export default {
   },
   watch: {
     show() {
-      this.showModal = this.show;
+      if (this.show) this.showModal = true;
+      else this.show = false;
     },
   },
 };

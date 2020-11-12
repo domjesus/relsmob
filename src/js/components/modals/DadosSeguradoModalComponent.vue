@@ -8,18 +8,19 @@
     @ok.prevent="hideModal"
     v-model="showModal"
   >
-    <label for="nomeSegurado">Nome: </label
-    ><input
+    <input
       type="text"
       class="form-control"
-      placeholder="nome do segurado"
+      placeholder="nome do(a) segurado(a) ou interessado(a)"
       @keyup="changeNameSegurado"
+      :value="nomeSegurado"
     />
   </b-modal>
 </template>
 
 <script>
 import { BModal } from "bootstrap-vue";
+import { mapGetters } from "vuex";
 
 export default {
   name: "DadosSeguradoModalComponent",
@@ -37,8 +38,14 @@ export default {
   },
   watch: {
     show() {
-      this.showModal = true;
+      if (this.show) this.showModal = true;
+      else this.show = false;
     },
+  },
+  computed: {
+    ...mapGetters({
+      nomeSegurado: "getNomeSegurado",
+    }),
   },
   components: {
     BModal,

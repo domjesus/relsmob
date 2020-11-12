@@ -37,7 +37,7 @@
             :class="{ 'btn-outline-danger': erroData }"
             @keyup="changePeriodoDebitoInicial($event.target.value)"
             v-mask="'##/##/####'"
-            @blur="validaData"
+            @blur="callValidaData($event, 'Período Início Débito')"
             v-b-tooltip.bottom.v-info
             title="Período inicial do débito"
           />
@@ -57,7 +57,7 @@
             id="periodoDebitoFinal"
             @keyup="changePeriodoDebitoFinal($event.target.value)"
             v-mask="'##/##/####'"
-            @blur="validaData"
+            @blur="callValidaData($event, 'Período Fim de Débito')"
             v-b-tooltip.bottom.v-info
             title="Período final do débito"
           />
@@ -102,14 +102,44 @@ export default {
       "changePeriodoDebitoFinal",
     ]),
 
-    validaData(e) {
+    callValidaData(e, nameOfField) {
       let data = e.target.value;
+      const campoId = e.target.id;
 
-      this.erroData = validaData(data);
+      this.checkData = validaData(data);
 
-      if (this.erroData) {
-        // alert("erro na data!");
+      if (!this.checkData && data != "") {
+        this.$bvToast.toast("Verifique o campo: " + nameOfField, {
+          variant: "danger",
+          title: "Erro!",
+          autoHideDelay: 3000,
+        });
+        document.getElementById(campoId).focus();
       }
+
+      const periodoInicial = document.getElementById("periodoDebitoInicial")
+        .value;
+      const periodoFinal = document.getElementById("periodoDebitoFinal").value;
+
+      const tmsIni = new Date(this.quebraData(periodoInicial)).getTime();
+      const tmsFim = new Date(this.quebraData(periodoFinal)).getTime();
+
+      if (tmsIni > tmsFim) {
+        this.$bvToast.toast(
+          "A data final não pode ser menor que a data inicial. Verifique o campo: " +
+            nameOfField,
+          {
+            variant: "danger",
+            title: "Erro!",
+            autoHideDelay: 3000,
+          }
+        );
+        document.getElementById(campoId).focus();
+      }
+    },
+    quebraData(data) {
+      const dt_tmp = data.split("/");
+      return dt_tmp[2] + "-" + dt_tmp[1] + "-" + dt_tmp[0];
     },
 
     workInValorDebito(valor) {

@@ -39,7 +39,10 @@ export default {
   },
   watch: {
     show() {
-      this.showModal = true;
+      if(this.show)
+       this.showModal = true;
+      else this.show = false;
+       
     },
   },
   methods: {

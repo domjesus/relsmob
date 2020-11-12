@@ -1,6 +1,9 @@
 <template>
   <div class="card ml-5 mr-5">
-    <RegularModalComponent show @changeModal="changeModal('statusCadUnico')" />
+    <RegularModalComponent
+      :show="modalToShow == 'statusInicial'"
+      @changeModal="changeModal('statusCadUnico')"
+    />
     <CadUnicoStatusModalComponent
       :show="modalToShow == 'statusCadUnico'"
       @changeModal="changeModal('dadosSegurado')"
@@ -11,7 +14,7 @@
     <div>
       <b-tabs content-class="mt-3" pills>
         <b-tab title="Dados Básicos" active>
-          <DadosBasicos />
+          <DadosBasicos @reOpenPopup="reOpenPopup" />
         </b-tab>
 
         <b-tab title="AnalisePrevia">
@@ -37,8 +40,6 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
-
 import { createPopper } from "@popperjs/core";
 import { BTabs, BTab } from "bootstrap-vue";
 import AnalisePrevia from "./AnalisePrevia/AnalisePrevia.vue";
@@ -60,6 +61,9 @@ export default {
   }, //END DATA
 
   methods: {
+    reOpenPopup(nameModal) {
+      this.modalToShow = nameModal;
+    },
     changeModal(nameModal) {
       this.modalToShow = nameModal;
     },

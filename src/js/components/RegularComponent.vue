@@ -1,5 +1,5 @@
 <template>
-  <div v-show="isRegular" @mouseleave="escondeToolTip">
+  <div>
     <h4>Análise regular</h4>
     <input
       type="text"

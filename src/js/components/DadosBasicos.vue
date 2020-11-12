@@ -52,7 +52,7 @@
           id="dtAtuCadUnico"
           @keyup="changeDtAtuCadUnico($event.target.value)"
           v-mask="'##/##/####'"
-          @blur="callValidaData"
+          @blur="callValidaData($event, 'Data Atualização CadÚnico')"
         />
       </div>
       <!-- END COL -->
@@ -149,6 +149,41 @@
         title="Processo concedido judicialmente"
       />Concessão judicial
     </div>
+    <div class="row mt-5">
+      <div class="col">
+        <label for="reexibir"
+          ><span
+            v-b-tooltip.bottom.warning
+            title="Clique para reexibir as respectivas janelas"
+            >Reexibir janelas:</span
+          >
+        </label>
+      </div>
+      <div class="col">
+        <b-button
+          variant="primary"
+          v-b-tooltip.bottom.v-warning
+          title="Reexibir janela status da análise"
+          @click="reexibirJanela('statusInicial')"
+          >Status</b-button
+        >
+        <b-button
+          variant="primary"
+          v-b-tooltip.bottom.v-warning
+          title="Reexibir status do CadÚnico"
+          @click="reexibirJanela('statusCadUnico')"
+          >CadÚnico</b-button
+        >
+
+        <b-button
+          variant="primary"
+          v-b-tooltip.bottom.v-warning
+          title="Reexibir nome do segurado"
+          @click="reexibirJanela('dadosSegurado')"
+          >Nome Segurado</b-button
+        >
+      </div>
+    </div>
   </div>
   <!-- <p>Aki vai o conteudo dos dados basicos</p>
           <span class="input-group-text" id="statusRegularidade"
@@ -228,6 +263,10 @@ export default {
       // "changeCollapsesToShow",
       "changeObjIrregularidade",
     ]),
+    reexibirJanela(janela) {
+      // console.log("Nom component dados basicos: " + janela);
+      this.$emit("reOpenPopup", janela);
+    },
 
     setCheckObjIrregularidade(e) {
       const txtObjIrregularidade = document.getElementById(
@@ -253,9 +292,20 @@ export default {
       // console.log(txtObjIrregularidade);
     },
 
-    callValidaData(data) {
-      //AJUSTAR VALIDACAO DA DATA
-      // if (!validaData(data)) alert("data errada!");
+    callValidaData(e, nameOfField) {
+      let data = e.target.value;
+      const campoId = e.target.id;
+
+      this.checkData = validaData(data);
+
+      if (!this.checkData && data != "") {
+        this.$bvToast.toast("Erro na data! Verifique o campo: " + nameOfField, {
+          variant: "danger",
+          title: "Erro!",
+          autoHideDelay: 3000,
+        });
+        document.getElementById(campoId).focus();
+      }
     },
   },
   components: {
