@@ -2,26 +2,33 @@
   <b-modal
     id="regular-modal"
     ref="segurado-modal"
-    title="Nome do(a) interessado"
+    title="Detalhe da irregularidade"
     ok-variant="success"
     ok-only
     @ok.prevent="hideModal"
     v-model="showModal"
-    @hidden="hideModal"
+    size="lg"
   >
-    <input
-      type="text"
-      class="form-control"
-      placeholder="nome do(a) segurado(a) ou interessado(a)"
-      @keyup="changeNameSegurado"
-      :value="nomeSegurado"
-    />
+    <textarea
+      name="txtDetalheIrregularidade"
+      id="txtDetalheIrregularidade"
+      rows="10"
+      placeholder="Informe os detalhes da irregularidade aqui."
+      @keyup="changeDetalheIrregularidade($event.target.value)"
+      :value="detalheIrregularidade"
+      v-b-tooltip.bottom.v-info
+      title="Este texto migrará para o relatório de análie, item 3 (se não foi informado objeto da irregularidade) ou 4. No ofício de recurso aparecerá no item 3."
+    ></textarea>
+    <!-- <p class="bg-warning">
+      Informe aqui um resumo da irregularidade, o qual sairá na análise da
+      defesa (item 3 ou 4) e no ofício de recurso (item ).
+    </p> -->
   </b-modal>
 </template>
 
 <script>
 import { BModal } from "bootstrap-vue";
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "DadosSeguradoModalComponent",
@@ -46,19 +53,22 @@ export default {
   computed: {
     ...mapGetters({
       nomeSegurado: "getNomeSegurado",
+      detalheIrregularidade: "getDetalheIrregularidade",
     }),
   },
   components: {
     BModal,
   },
+
   methods: {
+    ...mapActions(["changeDetalheIrregularidade"]),
+
     changeNameSegurado(field) {
       this.$store.dispatch("changeNomeSegurado", field.target.value);
       // console.log(this.$store.getters.getNomeSegurado);
     },
     hideModal() {
       // this.$refs['segurado-modal'].hide();
-      this.$emit("changeModal");
       this.showModal = false;
     },
   },
@@ -66,4 +76,9 @@ export default {
 </script>
 
 <style>
+textarea {
+  border-radius: 6px;
+  background-color: khaki;
+  width: 100%;
+}
 </style>

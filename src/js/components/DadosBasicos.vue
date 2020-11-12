@@ -182,6 +182,13 @@
           @click="reexibirJanela('dadosSegurado')"
           >Nome Segurado</b-button
         >
+        <b-button
+          variant="primary"
+          v-b-tooltip.bottom.v-warning
+          title="Reexibir detalhe irregularidade"
+          @click="reexibirJanela('detalheIrregularidade')"
+          >Detalhe da irregularidade</b-button
+        >
       </div>
     </div>
   </div>

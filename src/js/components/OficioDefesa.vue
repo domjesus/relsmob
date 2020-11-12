@@ -53,8 +53,10 @@ export default {
             variant: "success",
           });
       } catch (error) {
-        this.$bvToast.toast(`Copiado texto com sucesso!`, {
-          title: "Deu certo!",
+        console.log(error);
+
+        this.$bvToast.toast(`Erro ao copiar!`, {
+          title: "Erro!",
           autoHideDelay: 3000,
           variant: "danger",
         });

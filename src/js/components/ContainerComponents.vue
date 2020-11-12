@@ -9,7 +9,15 @@
       @changeModal="changeModal('dadosSegurado')"
     />
 
-    <DadosSeguradoModalComponent :show="modalToShow == 'dadosSegurado'" />
+    <DadosSeguradoModalComponent
+      :show="modalToShow == 'dadosSegurado'"
+      @changeModal="changeModal('detalheIrregularidade')"
+    />
+
+    <DetalheIrregularidadeModalComponent
+      :show="modalToShow == 'detalheIrregularidade'"
+    />
+
     <!-- {{collapsesToShow}} -->
     <div>
       <b-tabs content-class="mt-3" pills>
@@ -28,7 +36,6 @@
         </b-tab>
 
         <b-tab title="Ofício de Recurso">
-          <h3>Ofício de recurso</h3>
           <OficioRecurso />
         </b-tab>
       </b-tabs>
@@ -46,6 +53,8 @@ import AnalisePrevia from "./AnalisePrevia/AnalisePrevia.vue";
 import RegularModalComponent from "./modals/RegularModalComponent.vue";
 import DadosSeguradoModalComponent from "./modals/DadosSeguradoModalComponent.vue";
 import CadUnicoStatusModalComponent from "./modals/CadUnicoStatusModalComponent.vue";
+import DetalheIrregularidadeModalComponent from "./modals/DetalheIrregularidadeModalComponent.vue";
+
 import OficioDefesa from "./OficioDefesa.vue";
 import AnaliseDefesa from "./AnaliseDefesa.vue";
 import OficioRecurso from "./OficioRecurso.vue";
@@ -93,6 +102,7 @@ export default {
     RegularModalComponent,
     DadosSeguradoModalComponent,
     CadUnicoStatusModalComponent,
+    DetalheIrregularidadeModalComponent,
     OficioDefesa,
     AnaliseDefesa,
     OficioRecurso,

@@ -12,6 +12,9 @@
     v-model="showModal"
   >
     <p class="my-4">Se possível informe o status prévio da análise</p>
+    <p class="alert alert-warning">
+      Para parcialmente irregular marque 'irregular'
+    </p>
   </b-modal>
 </template>
 
@@ -39,10 +42,8 @@ export default {
   },
   watch: {
     show() {
-      if(this.show)
-       this.showModal = true;
+      if (this.show) this.showModal = true;
       else this.show = false;
-       
     },
   },
   methods: {
