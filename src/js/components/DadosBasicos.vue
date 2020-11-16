@@ -35,7 +35,10 @@
       />
     </div>
 
-    <div class="row mt-3">
+    <div
+      class="row mt-3"
+      v-show="tipoDeApuracaoSelecionado == 'superacaoRenda'"
+    >
       <div class="col col-md-4 input-group mb-0">
         <div class="input-group-prepend">
           <span class="input-group-text" id="spamdtAtuCadUnico"
@@ -105,7 +108,7 @@
       <DebitoComponent />
     </div>
 
-    <div class="row">
+    <div class="row" v-show="tipoDeApuracaoSelecionado == 'superacaoRenda'">
       <div class="col col-md-6">
         <input
           type="text"
@@ -163,6 +166,13 @@
         <b-button
           variant="primary"
           v-b-tooltip.bottom.v-warning
+          title="Reexibir Tipo de Apuração"
+          @click="reexibirJanela('tiposDeApuracao')"
+          >Tipos de Apuração</b-button
+        >
+        <b-button
+          variant="primary"
+          v-b-tooltip.bottom.v-warning
           title="Reexibir janela status da análise"
           @click="reexibirJanela('statusInicial')"
           >Status</b-button
@@ -172,6 +182,7 @@
           v-b-tooltip.bottom.v-warning
           title="Reexibir status do CadÚnico"
           @click="reexibirJanela('statusCadUnico')"
+          v-show="tipoDeApuracaoSelecionado == 'superacaoRenda'"
           >CadÚnico</b-button
         >
 
@@ -191,6 +202,7 @@
         >
       </div>
     </div>
+    <!-- Tipo: {{ tipoDeApuracaoSelecionado }} -->
   </div>
   <!-- <p>Aki vai o conteudo dos dados basicos</p>
           <span class="input-group-text" id="statusRegularidade"
@@ -244,6 +256,7 @@ export default {
       valorDebitoExtenso: "getValorDebitoExtenso",
       periodoDebitoInicial: "getPeriodoDebitoInicial",
       periodoDebitoFinal: "getPeriodoDebitoFinal",
+      tipoDeApuracaoSelecionado: "getTipoDeApuracaoSelecionado",
       // textos: "getTextos",
       // collapsesToShow: "getCollapsesToShow",
     }),

@@ -14,6 +14,7 @@
 
 <script>
 import { BModal, BButton } from "bootstrap-vue";
+import { mapGetters } from "vuex";
 
 export default {
   name: "CadUnicoStatusModalComponent",
@@ -35,14 +36,22 @@ export default {
       this.$store.dispatch("changeStatusCadUnicoAtual", status);
     },
   },
+  computed: {
+    ...mapGetters({
+      tiposDeApuracao: "getTiposDeApuracao",
+      tipoSelecionado: "getTipoDeApuracaoSelecionado",
+    }),
+  },
   components: {
     BModal,
     BButton,
   },
   watch: {
     show() {
-      if (this.show) this.showModal = true;
-      else this.show = false;
+      if (this.tipoSelecionado == "superacaoRenda") {
+        if (this.show) this.showModal = true;
+        else this.show = false;
+      } else this.$emit("changeModal");
     },
   },
 };

@@ -10,6 +10,7 @@ import debitoModule from "./modules/debitoModule";
 import textosModule from "./modules/textosModule";
 import appOptions from "./modules/appOptions";
 import irregularidadeModule from "./modules/irregularidadeModule";
+import tiposApuracao from "./modules/tiposDeApuracaoModule";
 
 export default new Vuex.Store({
   modules: {
@@ -20,6 +21,7 @@ export default new Vuex.Store({
     textosModule,
     appOptions,
     irregularidadeModule,
+    tiposApuracao,
   },
   state: {
     origemApuracao: [

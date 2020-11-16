@@ -1,5 +1,9 @@
 <template>
   <div class="card ml-5 mr-5">
+    <TiposDeApuracaoModalComponent
+      :show="modalToShow == 'tiposDeApuracao'"
+      @changeModal="changeModal('statusInicial')"
+    />
     <RegularModalComponent
       :show="modalToShow == 'statusInicial'"
       @changeModal="changeModal('statusCadUnico')"
@@ -21,22 +25,69 @@
     <!-- {{collapsesToShow}} -->
     <div>
       <b-tabs content-class="mt-3" pills>
+        <h5 v-if="nomeTipoApuracao">
+          Tipo de apuração selecionado: {{ nomeTipoApuracao }}
+        </h5>
         <b-tab title="Dados Básicos" active>
           <DadosBasicos @reOpenPopup="reOpenPopup" />
         </b-tab>
 
         <b-tab title="AnalisePrevia">
-          <AnalisePrevia />
+          <AnalisePrevia
+            v-show="tipoDeApuracaoSelecionado == 'superacaoRenda'"
+          />
+          <p
+            class="alert alert-danger"
+            v-show="tipoDeApuracaoSelecionado != 'superacaoRenda'"
+          >
+            Para o tipo de apuração "{{ nomeTipoApuracao || "não informado" }}"
+            infelizmente não temos modelo de texto, colabore enviando-os para
+            domjesus@gmail.com
+          </p>
         </b-tab>
         <b-tab title="Ofício de defesa">
-          <OficioDefesa />
+          <OficioDefesa
+            v-show="tipoDeApuracaoSelecionado == 'superacaoRenda'"
+          />
+
+          <p
+            class="alert alert-danger"
+            v-show="tipoDeApuracaoSelecionado != 'superacaoRenda'"
+          >
+            Para o tipo de apuração "{{ nomeTipoApuracao || "não informado" }}"
+            infelizmente não temos modelo de texto, colabore enviando-os para
+            domjesus@gmail.com
+          </p>
         </b-tab>
         <b-tab title="Análise de defesa">
-          <AnaliseDefesa />
+          <AnaliseDefesa
+            v-show="tipoDeApuracaoSelecionado == 'superacaoRenda'"
+          />
+
+          <p
+            class="alert alert-danger"
+            v-show="tipoDeApuracaoSelecionado != 'superacaoRenda'"
+          >
+            Para o tipo de apuração "{{ nomeTipoApuracao || "não informado" }}"
+            infelizmente não temos modelo de texto, colabore enviando-os para
+            domjesus@gmail.com
+          </p>
         </b-tab>
 
         <b-tab title="Ofício de Recurso">
-          <OficioRecurso />
+          <OficioRecurso
+            :tipo-de-apuracao="tipoDeApuracao"
+            v-show="tipoDeApuracaoSelecionado == 'superacaoRenda'"
+          />
+
+          <p
+            class="alert alert-danger"
+            v-show="tipoDeApuracaoSelecionado != 'superacaoRenda'"
+          >
+            Para o tipo de apuração "{{ nomeTipoApuracao || "não informado" }}"
+            infelizmente não temos modelo de texto, colabore enviando-os para
+            domjesus@gmail.com
+          </p>
         </b-tab>
       </b-tabs>
     </div>
@@ -47,13 +98,14 @@
 </template>
 
 <script>
-import { createPopper } from "@popperjs/core";
+import { mapGetters } from "vuex";
 import { BTabs, BTab } from "bootstrap-vue";
 import AnalisePrevia from "./AnalisePrevia/AnalisePrevia.vue";
 import RegularModalComponent from "./modals/RegularModalComponent.vue";
 import DadosSeguradoModalComponent from "./modals/DadosSeguradoModalComponent.vue";
 import CadUnicoStatusModalComponent from "./modals/CadUnicoStatusModalComponent.vue";
 import DetalheIrregularidadeModalComponent from "./modals/DetalheIrregularidadeModalComponent.vue";
+import TiposDeApuracaoModalComponent from "./modals/TiposDeApuracaoModalComponent.vue";
 
 import OficioDefesa from "./OficioDefesa.vue";
 import AnaliseDefesa from "./AnaliseDefesa.vue";
@@ -65,7 +117,7 @@ export default {
   data() {
     return {
       elementos: [],
-      modalToShow: "",
+      modalToShow: "tiposDeApuracao",
     }; //END RETURN
   }, //END DATA
 
@@ -74,8 +126,17 @@ export default {
       this.modalToShow = nameModal;
     },
     changeModal(nameModal) {
+      // console.log(nameModal);
+
       this.modalToShow = nameModal;
     },
+  },
+  computed: {
+    ...mapGetters({
+      tipoDeApuracaoSelecionado: "getTipoDeApuracaoSelecionado",
+      tipoDeApuracao: "getTipoDeApuracaoSelecionado",
+      nomeTipoApuracao: "getNomeDaApuracaoSelecionada",
+    }),
   },
 
   created() {
@@ -103,6 +164,7 @@ export default {
     DadosSeguradoModalComponent,
     CadUnicoStatusModalComponent,
     DetalheIrregularidadeModalComponent,
+    TiposDeApuracaoModalComponent,
     OficioDefesa,
     AnaliseDefesa,
     OficioRecurso,

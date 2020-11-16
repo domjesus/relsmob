@@ -34,9 +34,9 @@ export default {
       showModal: false,
     };
   },
-  mounted() {
-    this.$refs["main-modal"].show();
-  },
+  // mounted() {
+  //   this.$refs["main-modal"].show();
+  // },
   components: {
     BModal,
   },

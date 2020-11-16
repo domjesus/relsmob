@@ -12,7 +12,7 @@
             name="valorDebito"
             id="valorDebito"
             class="form-control"
-            @keyup="workInValorDebito($event.target.value)"
+            @blur="workInValorDebito($event.target.value)"
             v-money="money"
             v-b-popover.hover.bottom="{
               variant: 'primary',
