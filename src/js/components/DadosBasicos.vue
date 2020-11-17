@@ -1,6 +1,9 @@
 <template>
   <div class="ml-5 pr-5 mr-5 container-fluid">
-    <div class="input-group">
+    <div
+      class="input-group"
+      v-if="tipoDeApuracaoSelecionado == 'superacaoRenda'"
+    >
       <div class="input-group-prepend">
         <label class="input-group-text" for="inputGroupSelect01"
           >Origem da Apuração:</label
@@ -33,6 +36,51 @@
         :value="nomeSegurado"
         @keyup="changeNomeSegurado($event.target.value)"
       />
+    </div>
+
+    <div class="row mt-3" v-if="tipoDeApuracaoSelecionado == 'acumulacao'">
+      <div class="col col-md-3">
+        <div class="input-group mb-0">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="spam-acumulacao">Nb1:</span>
+          </div>
+
+          <input
+            type="text"
+            placeholder="00/000.000.000-0"
+            v-b-tooltip.bottom.v-info
+            title="Informe o primeiro NB que é objeto de acumulação indevida"
+            class="form-control"
+            v-mask="'##/###.###.###-#'"
+            @keyup="changeNbAcumuladoFirst($event.target.value)"
+          />
+        </div>
+      </div>
+
+      <div class="col col-md-3">
+        <div class="input-group mb-0">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="spam-acumulacao">Nb2:</span>
+          </div>
+          <input
+            type="text"
+            placeholder="00/000.000.000-0"
+            v-b-tooltip.bottom.v-info
+            title="Informe o *segundo* NB que é objeto de acumulação indevida"
+            class="form-control"
+            v-mask="'##/###.###.###-#'"
+            @keyup="changeNbAcumuladoSecond($event.target.value)"
+          />
+        </div>
+      </div>
+      <div class="col">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Origem Apuracao"
+          @keyup="changeOrigemApuracaoAcumulacao($event.target.value)"
+        />
+      </div>
     </div>
 
     <div
@@ -282,6 +330,9 @@ export default {
       // "changeTextos",
       // "changeCollapsesToShow",
       "changeObjIrregularidade",
+      "changeNbAcumuladoFirst",
+      "changeNbAcumuladoSecond",
+      "changeOrigemApuracaoAcumulacao",
     ]),
     reexibirJanela(janela) {
       // console.log("Nom component dados basicos: " + janela);

@@ -48,9 +48,9 @@
         Concessao Irregular
       </button>
     </div>
-    <div class="texto textoAnaliseDefesa" contenteditable>
+    <div :id="sourceToCopy">
       <!-- prettier-ignore -->
-      <ol id="textoAnaliseDefesa">
+      <ol contenteditable>
         <li>A Previdência Social, após avaliação de que trata o art. 11 da Lei n.º 10.666, de 8 de maio de 2003, detectou irregularidade na manutenção do Benefício de Prestação Continuada que consiste na percepção de renda per capita do grupo familiar superior a ¼ (um quarto) do salário-mínimo vigente, contrariando o contido no art. 20, § 3º, da Lei n.º 8.742/93, concomitante com o artigo 3º, inciso IV, do Decreto n.º 6.214/2007.</li>
         <li>
           A apuração do benefício está relacionada aos batimentos contínuos realizados pelo INSS e às informações prestadas pelo(a) titular (ou seu representante legal), estando o declarante sujeito às sanções previstas em lei nos casos de declaração falsa ou omissão de informação, de acordo com o art. 13 do Decreto n.º 6.214/2007.
@@ -71,15 +71,13 @@
       </ol>
     </div>
 
-    <br />
-    <button type="button" class="btn btn-primary" @click="copiatexto">
-      Copiar texto
-    </button>
+    <CopyText :sourceToCopy="sourceToCopy" />
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
+import CopyText from "./../components/CopyTextComponent.vue";
 
 export default {
   name: "MobRelatorioAnalise",
@@ -89,41 +87,8 @@ export default {
       defesaNaoApresentada: false,
       manutencaoIrregular: false,
       concessaoIrregular: false,
+      sourceToCopy: "analiseDefesa",
     };
-  },
-  methods: {
-    copiatexto(idElemento) {
-      const itemsLi = document.querySelectorAll("#textoAnaliseDefesa>li");
-      // const outrool = document.querySelector("." + textoAnaliseDefesa);
-      // console.log(outrool);
-      var textBoxCopy = document.createElement("textarea");
-      document.body.appendChild(textBoxCopy);
-
-      itemsLi.forEach(
-        (item, i) =>
-          (textBoxCopy.value +=
-            i + 1 + ".    " + item.innerHTML.trim() + "\n\n")
-      );
-
-      textBoxCopy.select();
-
-      try {
-        document.execCommand("copy");
-        this.$bvToast.toast(`Copiado texto com sucesso!`, {
-          title: "Deu certo!",
-          autoHideDelay: 3000,
-          variant: "success",
-        });
-      } catch (error) {
-        this.$bvToast.toast(`Erro ao copiar: ${error}`, {
-          title: "Erro!",
-          autoHideDelay: 3000,
-          variant: "danger",
-        });
-      }
-
-      document.body.removeChild(textBoxCopy);
-    },
   },
   computed: {
     ...mapGetters({
@@ -145,6 +110,9 @@ export default {
 
       return "Não há débito a se cobrar.";
     },
+  },
+  components: {
+    CopyText,
   },
 };
 </script>

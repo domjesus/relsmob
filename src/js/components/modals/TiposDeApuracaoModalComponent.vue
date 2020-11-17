@@ -7,10 +7,13 @@
     @hidden="closeAndRedirect"
   >
     <div class="container container-items">
+      <!-- variant="primary" -->
       <b-button
-        variant="primary"
         v-for="(type, i) in tiposDeApuracao"
         :key="i"
+        :class="[
+          type.tipo == tipoSelecionado ? 'btn btn-success' : 'btn btn-dark',
+        ]"
         class="btnItem"
         size="lg"
         @click="setTipoApuracao(type.tipo, type.nome)"

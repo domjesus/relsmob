@@ -11,6 +11,7 @@ import textosModule from "./modules/textosModule";
 import appOptions from "./modules/appOptions";
 import irregularidadeModule from "./modules/irregularidadeModule";
 import tiposApuracao from "./modules/tiposDeApuracaoModule";
+import acmulacaoModule from "./modules/acumulacaoModule";
 
 export default new Vuex.Store({
   modules: {
@@ -22,6 +23,7 @@ export default new Vuex.Store({
     appOptions,
     irregularidadeModule,
     tiposApuracao,
+    acmulacaoModule,
   },
   state: {
     origemApuracao: [

@@ -1,13 +1,13 @@
 <template>
   <div>
     <AnalisePreviaIrregular v-show="!isRegular" />
-    <AnalisePreviaRegular v-show="isRegular" />
+    <!-- <AnalisePreviaRegular v-show="isRegular" /> -->
   </div>
 </template>
 
 <script>
 import AnalisePreviaIrregular from "./AnalisePreviaIrregular.vue";
-import AnalisePreviaRegular from "./AnalisePreviaRegular.vue";
+// import AnalisePreviaRegular from "./AnalisePreviaRegular.vue";
 import { mapGetters } from "vuex";
 
 export default {
@@ -17,7 +17,7 @@ export default {
   },
   components: {
     AnalisePreviaIrregular,
-    AnalisePreviaRegular,
+    // AnalisePreviaRegular,
   },
 };
 </script>

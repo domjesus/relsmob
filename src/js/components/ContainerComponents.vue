@@ -33,36 +33,46 @@
         </b-tab>
 
         <b-tab title="AnalisePrevia">
-          <AnalisePrevia
-            v-show="tipoDeApuracaoSelecionado == 'superacaoRenda'"
-          />
-          <p
+          <div v-if="!tipoDeApuracaoSelecionado">
+            <p class="alert alert-danger">
+              Você deve selecionar um tipo de apuração na primeira tela!
+            </p>
+          </div>
+          <AnalisePreliminarComponent />
+          <!-- <p
             class="alert alert-danger"
             v-show="tipoDeApuracaoSelecionado != 'superacaoRenda'"
           >
             Para o tipo de apuração "{{ nomeTipoApuracao || "não informado" }}"
             infelizmente não temos modelo de texto, colabore enviando-os para
             domjesus@gmail.com
-          </p>
+          </p> -->
         </b-tab>
         <b-tab title="Ofício de defesa">
-          <OficioDefesa
-            v-show="tipoDeApuracaoSelecionado == 'superacaoRenda'"
-          />
+          <div v-if="!tipoDeApuracaoSelecionado">
+            <p class="alert alert-danger">
+              Você deve selecionar um tipo de apuração na primeira tela!
+            </p>
+          </div>
+          <OficioDefesaComponent />
 
-          <p
+          <!-- <p
             class="alert alert-danger"
             v-show="tipoDeApuracaoSelecionado != 'superacaoRenda'"
           >
             Para o tipo de apuração "{{ nomeTipoApuracao || "não informado" }}"
             infelizmente não temos modelo de texto, colabore enviando-os para
             domjesus@gmail.com
-          </p>
+          </p> -->
         </b-tab>
         <b-tab title="Análise de defesa">
-          <AnaliseDefesa
-            v-show="tipoDeApuracaoSelecionado == 'superacaoRenda'"
-          />
+          <div v-if="!tipoDeApuracaoSelecionado">
+            <p class="alert alert-danger">
+              Você deve selecionar um tipo de apuração na primeira tela!
+            </p>
+          </div>
+
+          <AnaliseDefesa />
 
           <p
             class="alert alert-danger"
@@ -100,17 +110,18 @@
 <script>
 import { mapGetters } from "vuex";
 import { BTabs, BTab } from "bootstrap-vue";
-import AnalisePrevia from "./AnalisePrevia/AnalisePrevia.vue";
+// import AnalisePrevia from "./AnalisePrevia/AnalisePrevia.vue";
 import RegularModalComponent from "./modals/RegularModalComponent.vue";
 import DadosSeguradoModalComponent from "./modals/DadosSeguradoModalComponent.vue";
 import CadUnicoStatusModalComponent from "./modals/CadUnicoStatusModalComponent.vue";
 import DetalheIrregularidadeModalComponent from "./modals/DetalheIrregularidadeModalComponent.vue";
 import TiposDeApuracaoModalComponent from "./modals/TiposDeApuracaoModalComponent.vue";
 
-import OficioDefesa from "./OficioDefesa.vue";
+import OficioDefesaComponent from "./oficioDefesa/OficioDefesaComponent.vue";
 import AnaliseDefesa from "./AnaliseDefesa.vue";
 import OficioRecurso from "./OficioRecurso.vue";
 import DadosBasicos from "./DadosBasicos.vue";
+import AnalisePreliminarComponent from "./analisePreliminar/AnalisePreliminarComponent.vue";
 
 export default {
   name: "ContainerComponents",
@@ -159,15 +170,16 @@ export default {
     BTabs,
     BTab,
     DadosBasicos,
-    AnalisePrevia,
+    // AnalisePrevia,
     RegularModalComponent,
     DadosSeguradoModalComponent,
     CadUnicoStatusModalComponent,
     DetalheIrregularidadeModalComponent,
     TiposDeApuracaoModalComponent,
-    OficioDefesa,
+    OficioDefesaComponent,
     AnaliseDefesa,
     OficioRecurso,
+    AnalisePreliminarComponent,
   },
 };
 </script>
