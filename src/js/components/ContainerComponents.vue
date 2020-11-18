@@ -32,7 +32,7 @@
           <DadosBasicos @reOpenPopup="reOpenPopup" />
         </b-tab>
 
-        <b-tab title="AnalisePrevia">
+        <b-tab title="Analise Previa">
           <div v-if="!tipoDeApuracaoSelecionado">
             <p class="alert alert-danger">
               Você deve selecionar um tipo de apuração na primeira tela!

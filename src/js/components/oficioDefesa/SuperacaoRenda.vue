@@ -19,6 +19,7 @@ import { mapGetters } from "vuex";
 
 export default {
   name: "SuperacaoRenda",
+
   computed: {
     ...mapGetters({
       objetoDaIrregularidade: "getObjIrregularidade",
@@ -27,6 +28,7 @@ export default {
       valorDebito: "getValorDebito",
       valorDebitoExtenso: "getValorDebitoExtenso",
       judicial: "getJudicial",
+      isRegular: "getIsRegular",
     }),
   },
 };

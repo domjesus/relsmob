@@ -1,6 +1,5 @@
 <template>
   <!-- prettier-ignore -->
-
   <ol contenteditable>
     <li>Trata-se de indícios irregularidade quanto à acumulação indevida de benefício, sendo um deles o benefício nº {{ nbAcumuladoFirst }}, onde figura como titular o (a) Sr(a) {{nomeSegurado}}, sendo que esta demanda se origina de {{ origemApuracao }}.</li>
     <li>A partir do cruzamento de informações verificou indícios de irregularidade que consistem em acumulação entre os benefícios {{ nbAcumuladoFirst }} e {{ nbAcumuladoSecond }}.</li>
