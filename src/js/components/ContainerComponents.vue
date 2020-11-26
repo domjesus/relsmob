@@ -1,5 +1,7 @@
 <template>
-  <div class="card ml-5 mr-5">
+  <div>
+    <NavBarComponent />
+
     <TiposDeApuracaoModalComponent
       :show="modalToShow == 'tiposDeApuracao'"
       @changeModal="changeModal('statusInicial')"
@@ -122,6 +124,7 @@ import AnaliseDefesa from "./AnaliseDefesa.vue";
 import OficioRecurso from "./OficioRecurso.vue";
 import DadosBasicos from "./DadosBasicos.vue";
 import AnalisePreliminarComponent from "./analisePreliminar/AnalisePreliminarComponent.vue";
+import NavBarComponent from "./../components/NavBarComponent.vue";
 
 export default {
   name: "ContainerComponents",
@@ -180,109 +183,7 @@ export default {
     AnaliseDefesa,
     OficioRecurso,
     AnalisePreliminarComponent,
+    NavBarComponent,
   },
 };
 </script>
-
-<style scoped>
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-}
-
-/* Hide default HTML checkbox */
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-/* The slider */
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
-}
-
-input:checked + .slider {
-  background-color: #2196f3;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196f3;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
-
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
-}
-
-#tooltip {
-  background-color: darkred;
-  color: white;
-  padding: 5px 10px;
-  border-radius: 4px;
-  font-size: 13px;
-  font-weight: bold;
-  /* display: none; */
-}
-
-#arrow,
-#arrow::before {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  z-index: -1;
-}
-
-#arrow::before {
-  content: "";
-  transform: rotate(45deg);
-  background: black;
-}
-
-#tooltip[data-popper-placement^="bottom"] > #arrow {
-  top: -4px;
-}
-
-#tooltip[data-popper-placement^="left"] > #arrow {
-  right: -4px;
-}
-
-#tooltip[data-popper-placement^="right"] > #arrow {
-  left: -4px;
-}
-#tooltip[data-show] {
-  display: block;
-}
-</style>

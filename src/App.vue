@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-5">
+  <div id="nav">
     <ContainerComponents />
     <!-- <card-accordion /> -->
   </div>
@@ -25,3 +25,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+#nav {
+  padding: 30px;
+}
+</style>
