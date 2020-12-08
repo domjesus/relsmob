@@ -61,6 +61,7 @@
         <li v-if="defesaNaoApresentada">
           Encaminhado o Ofício de Defesa, com base no art. 5º, inciso LV, da Constituição Federal, de 5 de outubro de 1988, e decorrido o devido prazo legal, NÃO houve manifestação do(a) interessado(a).
         </li>
+        <li v-if="obsBpcLeiNova">{{obsBpcLeiNova}}</li>
         <li v-if="objIrregularidade">{{ objIrregularidade }}</li>
         <li v-if="detalheIrregularidade">{{ detalheIrregularidade }}</li>
         <li v-if="manutencaoIrregular">Após as devidas análises, entendemos pela manutenção irregular do benefício, uma vez que a renda per capita passou a ser superior a ¼ (um quarto) do salário-mínimo vigente, após a concessão, havendo, portanto, a superação dos requisitos para a manutenção do benefício assistencial em análise, devendo os valores recebidos indevidamente serem devolvidos em razão de restar comprovada a materialidade da conduta de má-fé por parte do beneficiário, pela omissão da informação, de acordo com os artigos 47, 48 e 49 do Decreto n.º 6.214/2007. Foi realizado o levantamento do valor de R$ {{valorDebito}} {{valorDebitoExtenso}}, corrigido monetariamente até esta data, referente ao período de {{periodoDebitoInicial}} a {{periodoDebitoFinal}}, conforme art. 175 do Decreto n.º 3048/99.</li>
@@ -102,6 +103,7 @@ export default {
       detalheIrregularidade: "getDetalheIrregularidade",
       isRegular: "getIsRegular",
       origemApuracaoAtual: "getOrigemApuracaoAtual",
+      obsBpcLeiNova: "getObsBpcLeiNova",
     }),
 
     hasDebito() {

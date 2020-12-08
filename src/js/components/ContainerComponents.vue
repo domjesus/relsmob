@@ -26,7 +26,7 @@
 
     <!-- {{collapsesToShow}} -->
     <div>
-      <b-tabs content-class="mt-3" pills>
+      <b-tabs content-class="mt-3">
         <h5 v-if="nomeTipoApuracao">
           Tipo de apuração selecionado: {{ nomeTipoApuracao }}
         </h5>
