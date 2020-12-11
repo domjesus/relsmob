@@ -207,8 +207,12 @@
               'Registre-se que até 01/04/2020 era vigente o critério de que o benefício previdenciário de qualquer valor entrava para cálculo da renda percapta, sendo que este entendimento foi alterado com a publicação da Lei 13982 de 02/04/2020, sendo que conforme a PORTARIA Nº 374/DIRBEN/INSS, DE 05 DE MAIO DE 2020 em seu art. 2º os valores recebidos por componentes do grupo familiar, idoso, acima de 65 (sessenta e cinco) anos de idade, ou pessoa com deficiência, de BPC/LOAS ou de benefício previdenciário de até um salário-mínimo, ficam excluídos da aferição da renda familiar mensal per capita para fins de análise do direito ao BPC/LOAS.'
             )
           "
-          v-b-tooltip.bottom.info
-          title="Copia para a análise prévia e análise de defesa um texto padrão com observações a respeito da alteração do critério de 1/4 do salário mínimo e exclusão de benefícios previdenciários de valor mínimo do cálculo da renda percapta."
+          v-b-popover.hover.bottom="{
+            variant: 'info',
+            content:
+              'Copia para a análise prévia e análise de defesa um texto padrão com observações a respeito da alteração do critério de 1/4 do salário mínimo e exclusão de benefícios previdenciários de valor mínimo do cálculo da renda percapta.',
+          }"
+          title="Alterações Loas Lei 13982/2020"
         />Observação Lei 13892 de 02/04/2020
       </div>
     </div>
@@ -217,7 +221,7 @@
       <div class="col">
         <label for="reexibir"
           ><span
-            v-b-tooltip.bottom.warning
+            v-b-tooltip.bottom.v-info
             title="Clique para reexibir as respectivas janelas"
             >Reexibir janelas:</span
           >

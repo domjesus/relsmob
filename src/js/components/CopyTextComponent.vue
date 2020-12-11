@@ -41,6 +41,7 @@ export default {
           title: "Deu certo!",
           autoHideDelay: 3000,
           variant: "success",
+          solid: true,
         });
       } catch (error) {
         this.$bvToast.toast(`Erro ao copiar: ${error}`, {

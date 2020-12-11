@@ -3,6 +3,7 @@
   <ol contenteditable>
     <li>Após avaliação de que trata o art. 11 da Lei n.º 10.666, de 8 de maio de 2003, foi detectada possível irregularidade na manutenção do seu benefício, identificando, por meio de batimento de dados contínuos, que a renda per capita do grupo familiar do Benefício de Prestação Continuada contraria o contido no art. 20, § 3º, da Lei n.º 8.742/93, concomitante com o artigo 3º, inciso IV, do Decreto n.º 6.214/2007.</li>
     <li v-if="objetoDaIrregularidade">{{ objetoDaIrregularidade.trim() }} {{ judicial }}</li>
+    <li v-if="obsBpcLeiNova && !isRegular">Informamos que após 01/04/2020, véspera da publicação da Lei 13982/2020, a renda de benefício previdenciário de salário mínimo não mais é computada para cálculo da renda percapta, no entanto houve irregularidade antes de 01/04/2020.</li>
     <li>Desta maneira, em respeito aos princípios do contraditório e da ampla defesa, facultamos o prazo de 30 (trinta) dias a V.Sa., a contar do recebimento desta correspondência, para apresentar defesa, provas e documentos que demonstrem a regularidade do benefício.</li>
     <li>Considerando que a renda per capita do grupo familiar é igual ou superior a ¼ (um quarto) do salário-mínimo vigente na data da apuração, oportunizamos, em atenção à Ação Civil Pública n.º 5044874-22.2013.4.04.7100-RS, comprovar as despesas feitas em razão de sua deficiência, incapacidade ou idade avançada, com:
 a) medicamentos: comprovação de prescrição médica e comprovação do valor mensal gasto; b) alimentação especial: comprovação de prescrição médica e comprovação de valor mensal gasto;
@@ -29,6 +30,7 @@ export default {
       valorDebitoExtenso: "getValorDebitoExtenso",
       judicial: "getJudicial",
       isRegular: "getIsRegular",
+      obsBpcLeiNova: "getObsBpcLeiNova",
     }),
   },
 };
