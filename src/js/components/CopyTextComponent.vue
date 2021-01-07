@@ -32,7 +32,7 @@ export default {
               i + 1 + ".    " + item.innerHTML.trim() + "\n\n";
         }
       });
-
+      textBoxCopy.value = textBoxCopy.value.trim();
       textBoxCopy.select();
 
       try {
