@@ -39,14 +39,16 @@ export default {
         document.execCommand("copy");
         this.$bvToast.toast(`Copiado texto com sucesso!`, {
           title: "Deu certo!",
-          autoHideDelay: 3000,
+          autoHideDelay: 5000,
           variant: "success",
+          toaster: "b-toaster-bottom-center",
           solid: true,
         });
       } catch (error) {
         this.$bvToast.toast(`Erro ao copiar: ${error}`, {
           title: "Erro!",
-          autoHideDelay: 3000,
+          autoHideDelay: 5000,
+          toaster: "b-toaster-bottom-center",
           variant: "danger",
         });
       }
