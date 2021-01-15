@@ -38,10 +38,17 @@ export default {
       const twoYears = 1000 * 60 * 60 * 24 * 365 * 2;
 
       if (dt_exploded.length === 3) {
-        if (dt_cadastro > 0 && dt_apuracao.getTime() > dt_cadastro.getTime() + twoYears)
+        if (dt_cadastro > 0 && dt_apuracao.getTime() > dt_cadastro.getTime() + twoYears) {
           context.commit("setPassouDoisAnos", true);
-        else context.commit("setPassouDoisAnos", false);
-      } else context.commit("setPassouDoisAnos", false);
+          context.commit("setStatusCadUnicoAtual", "desatualizado");
+        } else {
+          context.commit("setPassouDoisAnos", false);
+          context.commit("setStatusCadUnicoAtual", "atualizado");
+        }
+      } else {
+        context.commit("setStatusCadUnicoAtual", "atualizado");
+        context.commit("setPassouDoisAnos", false);
+      }
       // console.log("DT ATU CADUNICO: ", new Date(dt_exploded[2], dt_exploded[1], dt_exploded[0]));
 
       // console.log("cad: ", dt_cadastro.getTime());
