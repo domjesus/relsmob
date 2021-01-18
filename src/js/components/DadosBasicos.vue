@@ -104,6 +104,8 @@
           @keyup="changeDtAtuCadUnico($event.target.value)"
           v-mask="'##/##/####'"
           @blur="callValidaData($event, 'Data Atualização CadÚnico')"
+          :disabled="statusCadUnicoAtual == 'inexistente'"
+          :value="dtAtuCadUnico"
         />
       </div>
       <!-- END COL -->
@@ -145,7 +147,7 @@
           membroIrregularidade.toUpperCase()
         }} recebe no valor de {{
           vlrIrregularidade
-        }} (conforme dados do CadÚnico/CNIS), faz com que a renda percapta do grupo familiar fique superior ao permitido por lei para manutenção do benefício que é de 1/4 do salário mínimo (R$ 261,25) por pessoa, ficando desta forma superado o critério de baixa renda para fins de acesso/permência ao/no BPC. {{
+        }} (conforme dados do CadÚnico/CNIS), faz com que a renda percapta do grupo familiar fique superior ao permitido por lei para manutenção do benefício que é de 1/4 do salário mínimo (R$ 275,00) por pessoa, ficando desta forma superado o critério de baixa renda para fins de acesso/permência ao/no BPC. {{
           judicial
         }}
     </textarea
