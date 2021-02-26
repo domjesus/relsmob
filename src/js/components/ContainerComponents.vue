@@ -1,11 +1,13 @@
 <template>
   <div>
     <NavBarComponent />
+    <contribute-component @changeModal="changeModal('tiposDeApuracao')" />
 
     <TiposDeApuracaoModalComponent
       :show="modalToShow == 'tiposDeApuracao'"
       @changeModal="changeModal('statusInicial')"
     />
+
     <RegularModalComponent
       :show="modalToShow == 'statusInicial'"
       @changeModal="changeModal('statusCadUnico')"
@@ -125,15 +127,24 @@ import OficioRecurso from "./OficioRecurso.vue";
 import DadosBasicos from "./DadosBasicos.vue";
 import AnalisePreliminarComponent from "./analisePreliminar/AnalisePreliminarComponent.vue";
 import NavBarComponent from "./../components/NavBarComponent.vue";
+import ContributeComponent from "./modals/ContributeComponent.vue";
+import { getCookie } from "./../utils/CookieManager";
 
 export default {
   name: "ContainerComponents",
   data() {
     return {
       elementos: [],
-      modalToShow: "tiposDeApuracao",
+      modalToShow: "",
     }; //END RETURN
   }, //END DATA
+  mounted() {
+    const dia = new Date().getDate();
+    const jaleu = getCookie("jaleu");
+
+    if (jaleu || (dia > 6 && dia < 31)) this.modalToShow = "tiposDeApuracao";
+    else this.modalToShow = "";
+  },
 
   methods: {
     reOpenPopup(nameModal) {
@@ -184,6 +195,7 @@ export default {
     OficioRecurso,
     AnalisePreliminarComponent,
     NavBarComponent,
+    ContributeComponent,
   },
 };
 </script>
