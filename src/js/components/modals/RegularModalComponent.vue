@@ -3,18 +3,34 @@
     id="main-modal"
     ref="main-modal"
     title="Status Prévio"
-    ok-title="REGULAR"
+    v-model="showModal"
+    hide-footer
+  >
+    <b-container>
+      <!-- ok-title="REGULAR"
     ok-variant="success"
     cancel-title="IRREGULAR"
     cancel-variant="danger"
     @ok.prevent="setRegular"
-    @cancel.prevent="setIrregular"
-    v-model="showModal"
-  >
-    <p class="my-4">Se possível informe o status prévio da análise</p>
-    <p class="alert alert-warning">
-      Para parcialmente irregular marque 'irregular'
-    </p>
+    @cancel.prevent="setIrregular" -->
+      <p class="my-4">Se possível informe o status prévio da análise</p>
+      <p class="alert alert-warning">
+        Para parcialmente irregular marque 'irregular'
+      </p>
+
+      <b-button
+        variant="danger"
+        size="lg"
+        class="ml-5 my-5"
+        @click="setIrregular"
+      >
+        <b-icon icon="hand-thumbs-down"> </b-icon>Irregular
+      </b-button>
+
+      <b-button variant="success" size="lg" class="ml-5" @click="setRegular">
+        <b-icon icon="hand-thumbs-up"> </b-icon>Rregular
+      </b-button>
+    </b-container>
   </b-modal>
 </template>
 

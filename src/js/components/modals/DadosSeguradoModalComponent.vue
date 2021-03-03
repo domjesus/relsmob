@@ -9,13 +9,18 @@
     v-model="showModal"
     @hidden="hideModal"
   >
-    <input
-      type="text"
-      class="form-control"
-      placeholder="nome do(a) segurado(a) ou interessado(a)"
-      @keyup="changeNameSegurado"
-      :value="nomeSegurado"
-    />
+    <b-input-group>
+      <b-input-group-prepend is-text>
+        <b-icon icon="person-fill"></b-icon>
+      </b-input-group-prepend>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="nome do(a) segurado(a) ou interessado(a)"
+        @keyup="changeNameSegurado"
+        :value="nomeSegurado"
+      />
+    </b-input-group>
   </b-modal>
 </template>
 
@@ -53,7 +58,7 @@ export default {
   },
   methods: {
     changeNameSegurado(field) {
-      this.$store.dispatch("changeNomeSegurado", field.target.value);
+      this.$store.dispatch("changeNomeSegurado", field.target.value.trim());
       // console.log(this.$store.getters.getNomeSegurado);
     },
     hideModal() {

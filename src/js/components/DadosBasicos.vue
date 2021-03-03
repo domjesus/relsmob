@@ -88,25 +88,27 @@
       v-show="tipoDeApuracaoSelecionado == 'superacaoRenda'"
     >
       <div class="col col-md-4 input-group mb-0">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="spamdtAtuCadUnico"
-            >Atualização Cadúnico:</span
-          >
-        </div>
-        <input
-          type="text"
-          class="form-control"
-          aria-label="dtAtuCadUnico"
-          aria-describedby="spamdtAtuCadUnico"
-          placeholder="Data de atualização"
-          name="dtAtuCadUnico"
-          id="dtAtuCadUnico"
-          @keyup="changeDtAtuCadUnico($event.target.value)"
-          v-mask="'##/##/####'"
-          @blur="callValidaData($event, 'Data Atualização CadÚnico')"
-          :disabled="statusCadUnicoAtual == 'inexistente'"
-          :value="dtAtuCadUnico"
-        />
+        <b-input-group>
+          <b-input-group-prepend is-text>
+            <b-icon icon="calendar-date"> </b-icon>
+          </b-input-group-prepend>
+          <input
+            type="text"
+            class="form-control"
+            aria-label="dtAtuCadUnico"
+            aria-describedby="spamdtAtuCadUnico"
+            placeholder="Data de atualização"
+            name="dtAtuCadUnico"
+            id="dtAtuCadUnico"
+            @keyup="changeDtAtuCadUnico($event.target.value)"
+            v-mask="'##/##/####'"
+            @blur="callValidaData($event, 'Data Atualização CadÚnico')"
+            :disabled="statusCadUnicoAtual == 'inexistente'"
+            :value="dtAtuCadUnico"
+            v-b-tooltip.bottom.v-info
+            title="Data de atualização do CadÚnico."
+          />
+        </b-input-group>
       </div>
       <!-- END COL -->
       <div class="col">

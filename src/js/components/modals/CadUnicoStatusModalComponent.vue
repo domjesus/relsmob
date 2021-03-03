@@ -1,31 +1,48 @@
 <template>
   <b-modal title="Status CadúNICO" v-model="showModal" hide-footer>
-    <div class="row">
-      <div class="col col-md-6 mb-8">
-        <input
-          type="text"
-          class="form-control"
-          aria-label="dtAtuCadUnico"
-          aria-describedby="spamdtAtuCadUnico"
-          placeholder="Data de atualização"
-          name="dtAtuCadUnico"
-          id="dtAtuCadUnico"
-          v-mask="'##/##/####'"
-          @keyup="callValidaData($event, 'Data Atualização CadÚnico')"
-        />
+    <b-container>
+      <p class="alert alert-warning py-3 px-3">
+        Informe a data abaixo e será calculado automaticamente se está
+        atualizado ou não, de acordo com o critério de 2 anos. Caso não haja
+        cadastro clique no botão "Inexistente"
+      </p>
+      <div class="row">
+        <b-input-group size="lg">
+          <b-input-group-prepend is-text>
+            <b-icon icon="calendar-date"> </b-icon>
+          </b-input-group-prepend>
+          <input
+            type="text"
+            class="form-control"
+            aria-label="dtAtuCadUnico"
+            aria-describedby="spamdtAtuCadUnico"
+            placeholder="Data de atualização"
+            name="dtAtuCadUnico"
+            id="dtAtuCadUnico"
+            v-mask="'##/##/####'"
+            @keyup="callValidaData($event, 'Data Atualização CadÚnico')"
+            v-b-tooltip.hover.v-info
+            title="Data da atualização do CadÚnico"
+            :value="dtAtualizacaoCadUnico"
+          />
+          <b-button
+            size="md"
+            variant="danger"
+            @click="setStatus('inexistente')"
+            class="ml-3"
+          >
+            <b-icon icon="hand-thumbs-down"></b-icon>Inexistente
+          </b-button>
+        </b-input-group>
       </div>
-      <div class="col">
-        <b-button size="xl" variant="warning" @click="setStatus('inexistente')"
-          >INEXISTENTE
-        </b-button>
-      </div>
-    </div>
-    <!-- <b-button size="xl" variant="success" @click="setStatus('atualizado')"
+
+      <!-- <b-button size="xl" variant="success" @click="setStatus('atualizado')"
       >ATUALIZADO</b-button -->
-    <!-- > -->
-    <!-- <b-button size="xl" variant="danger" @click="setStatus('desatualizado')"
+      <!-- > -->
+      <!-- <b-button size="xl" variant="danger" @click="setStatus('desatualizado')"
       >DESATUALIZADO</b-button
     > -->
+    </b-container>
   </b-modal>
 </template>
 
@@ -84,6 +101,7 @@ export default {
     ...mapGetters({
       tiposDeApuracao: "getTiposDeApuracao",
       tipoSelecionado: "getTipoDeApuracaoSelecionado",
+      dtAtualizacaoCadUnico: "getDtAtuCadUnico",
     }),
   },
   watch: {

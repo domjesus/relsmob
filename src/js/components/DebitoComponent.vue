@@ -15,7 +15,7 @@
             @blur="workInValorDebito($event.target.value)"
             v-money="money"
             v-b-popover.hover.bottom="{
-              variant: 'primary',
+              variant: 'info',
               content:
                 'Digite o valor do débito. Esta informação sairá com o valor extenso convertido no ofício de defesa (item 5)/análise/recurso. Informe também o período inicial e final do débito.',
             }"
