@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <b-card>
     <NavBarComponent />
     <contribute-component @changeModal="changeModal('tiposDeApuracao')" />
 
@@ -27,7 +27,7 @@
     />
 
     <!-- {{collapsesToShow}} -->
-    <div>
+    <b-card>
       <b-tabs content-class="mt-3">
         <h5 v-if="nomeTipoApuracao">
           Tipo de apuração selecionado: {{ nomeTipoApuracao }}
@@ -104,16 +104,20 @@
           </p>
         </b-tab>
       </b-tabs>
-    </div>
+    </b-card>
 
     <!-- END ROW -->
-  </div>
+  </b-card>
   <!-- END DIV CARD -->
 </template>
 
 <script>
 import { mapGetters } from "vuex";
-import { BTabs, BTab } from "bootstrap-vue";
+// import {
+//   BTabs,
+//   BTab,
+//   BCard,
+// } from "bootstrap-vue";
 // import AnalisePrevia from "./AnalisePrevia/AnalisePrevia.vue";
 import RegularModalComponent from "./modals/RegularModalComponent.vue";
 import DadosSeguradoModalComponent from "./modals/DadosSeguradoModalComponent.vue";
@@ -181,8 +185,9 @@ export default {
     // );
   },
   components: {
-    BTabs,
-    BTab,
+    // BTabs,
+    // BTab,
+    // BCard,
     DadosBasicos,
     // AnalisePrevia,
     RegularModalComponent,
