@@ -28,7 +28,7 @@
       </b-button>
 
       <b-button variant="success" size="lg" class="ml-5" @click="setRegular">
-        <b-icon icon="hand-thumbs-up"> </b-icon>Rregular
+        <b-icon icon="hand-thumbs-up"></b-icon>Regular
       </b-button>
     </b-container>
   </b-modal>

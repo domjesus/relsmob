@@ -31,7 +31,7 @@ export default {
   name: "AcumulacaoCOmponent",
   data() {
     return {
-      sourceToCopy: "analisePreliminar",
+      sourceToCopy: "analise_Preliminar",
     };
   },
   computed: {

@@ -88,7 +88,7 @@ export default {
       defesaNaoApresentada: false,
       manutencaoIrregular: false,
       concessaoIrregular: false,
-      sourceToCopy: "analiseDefesa",
+      sourceToCopy: "analise_Defesa",
     };
   },
   computed: {

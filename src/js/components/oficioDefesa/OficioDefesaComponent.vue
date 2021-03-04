@@ -17,7 +17,7 @@ export default {
   name: "OficioDefesaComponent",
   data() {
     return {
-      sourceToCopy: "oficioDefesa",
+      sourceToCopy: "oficio_Defesa",
     };
   },
   components: {

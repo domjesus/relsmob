@@ -1,5 +1,5 @@
 <template>
-  <b-navbar toggleable="lg" variant="secondary" type='dark'>
+  <b-navbar toggleable="lg" variant="secondary" type='dark' class="mb-2">
     <b-navbar-brand href="https://teletrabalho.net">
       
       <img

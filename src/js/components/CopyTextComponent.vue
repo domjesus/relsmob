@@ -1,7 +1,14 @@
 <template>
-  <button type="button" class="btn btn-primary" @click="copyText">
-    Copiar texto
-  </button>
+  <b-button
+    @click="copyText"
+    v-b-tooltip.v-info
+    size="lg"
+    title="Clique para copiar o texto!"
+    variant="primary"
+    class="copy"
+  >
+    <b-icon icon="clipboard-plus"></b-icon>Copiar
+  </b-button>
 </template>
 
 <script>
@@ -37,13 +44,16 @@ export default {
 
       try {
         document.execCommand("copy");
-        this.$bvToast.toast(`Copiado texto com sucesso!`, {
-          title: "Deu certo!",
-          autoHideDelay: 5000,
-          variant: "success",
-          toaster: "b-toaster-bottom-center",
-          solid: true,
-        });
+        this.$bvToast.toast(
+          `Copiado texto de ${this.sourceToCopy.toUpperCase()} com sucesso!`,
+          {
+            title: "Deu certo!",
+            autoHideDelay: 5000,
+            variant: "success",
+            toaster: "b-toaster-bottom-center",
+            solid: true,
+          }
+        );
       } catch (error) {
         this.$bvToast.toast(`Erro ao copiar: ${error}`, {
           title: "Erro!",

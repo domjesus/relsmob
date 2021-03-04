@@ -26,27 +26,19 @@
 
     <!-- prettier-ignore -->
 
-    <div class="texto-recurso">
+    <div :id="sourceToCopy">
       <SuperacaoRenda :defesaNaoApresentada="defesaNaoApresentada" :defesaInsuficiente="defesaInsuficiente" v-if="tipoDeApuracao == 'superacaoRenda'"/>
       <VinculosFicticios :defesaNaoApresentada="defesaNaoApresentada" :defesaInsuficiente="defesaInsuficiente" v-if="tipoDeApuracao == 'vinculosFicticios'"/>
       <div class="alert alert-danger" v-if="!tipoDeApuracao">Não foi selecionado tipo de apuração!</div>
     </div>
 
-    <br />
-    <button
-      type="button"
-      class="btn btn-primary"
-      name="btnCopia"
-      id="btnCopia"
-      @click="copiatexto('textoAnaliseDefesa')"
-    >
-      Copiar texto
-    </button>
+    <copy-text-component :sourceToCopy="sourceToCopy" />
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
+import CopyTextComponent from "./CopyTextComponent.vue";
 import SuperacaoRenda from "./recurso/bpc/superacaoRenda.vue";
 import VinculosFicticios from "./recurso/vinculos/VinculosFicticios.vue";
 
@@ -62,11 +54,13 @@ export default {
     return {
       defesaNaoApresentada: false,
       defesaInsuficiente: true,
+      sourceToCopy: "recurso",
     };
   },
   components: {
     SuperacaoRenda,
     VinculosFicticios,
+    CopyTextComponent,
   },
   computed: {
     // ...mapGetters({ tipoDeApuracao: "getTipoDeApuracaoSelecioanado" }),

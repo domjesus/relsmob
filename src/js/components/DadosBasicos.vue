@@ -1,5 +1,5 @@
 <template>
-  <div class="ml-5 pr-5 mr-5 container-fluid">
+  <div class="ml-5 pr-5 mr-5">
     <div
       class="input-group"
       v-if="tipoDeApuracaoSelecionado == 'superacaoRenda'"
