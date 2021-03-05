@@ -21,7 +21,8 @@ export default {
     },
   },
   methods: {
-    copyText(sourceToCopy) {
+    copyText() {
+      console.log(this.sourceToCopy);
       const itemsLi = document.querySelectorAll(`#${this.sourceToCopy}>ol>li`);
       // const outrool = document.querySelector("." + textoAnaliseDefesa);
       //   console.log(this.sourceToCopy);
@@ -32,7 +33,7 @@ export default {
         // console.log(item);
 
         if (item.innerHTML.trim()) {
-          if (this.sourceToCopy == "oficioDefesa")
+          if (this.sourceToCopy == "oficio_defesa")
             textBoxCopy.value += i + 1 + ".    " + item.innerHTML.trim() + "\n";
           else
             textBoxCopy.value +=
@@ -70,4 +71,9 @@ export default {
 </script>
 
 <style>
+.copy {
+  position: fixed;
+  bottom: 60px;
+  right: 60px;
+}
 </style>
