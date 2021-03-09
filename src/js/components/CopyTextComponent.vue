@@ -22,7 +22,7 @@ export default {
   },
   methods: {
     copyText() {
-      console.log(this.sourceToCopy);
+      // console.log(this.sourceToCopy);
       const itemsLi = document.querySelectorAll(`#${this.sourceToCopy}>ol>li`);
       // const outrool = document.querySelector("." + textoAnaliseDefesa);
       //   console.log(this.sourceToCopy);
@@ -33,7 +33,10 @@ export default {
         // console.log(item);
 
         if (item.innerHTML.trim()) {
-          if (this.sourceToCopy == "oficio_defesa")
+          if (
+            this.sourceToCopy == "oficio_defesa" ||
+            this.sourceToCopy == "recurso"
+          )
             textBoxCopy.value += i + 1 + ".    " + item.innerHTML.trim() + "\n";
           else
             textBoxCopy.value +=

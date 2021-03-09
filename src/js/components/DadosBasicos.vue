@@ -162,20 +162,25 @@
 
     <div class="row" v-show="tipoDeApuracaoSelecionado == 'superacaoRenda'">
       <div class="col col-md-6">
-        <input
-          type="text"
-          v-model="membroIrregularidade"
-          placeholder="Membro Irregularidade"
-          @keyup="setObjIrregularidade"
-          size="50"
-          class="form-control"
-          v-b-popover.hover.bottom="{
-            variant: 'info',
-            content:
-              'Digite o nome do membro do GF ao qual se refere a irregularidade. Sairá no Ofício de Defesa (item 2).',
-          }"
-          title="Membro do GF origem da irregularidade"
-        />
+        <b-input-group>
+          <b-input-group-prepend is-text>
+            <b-icon icon="person-lines-fill"></b-icon>
+          </b-input-group-prepend>
+          <input
+            type="text"
+            v-model="membroIrregularidade"
+            placeholder="Membro Irregularidade"
+            @keyup="setObjIrregularidade"
+            size="50"
+            class="form-control"
+            v-b-popover.hover.bottom="{
+              variant: 'info',
+              content:
+                'Digite o nome do membro do GF ao qual se refere a irregularidade. Sairá no Ofício de Defesa (item 2).',
+            }"
+            title="Membro do GF origem da irregularidade"
+          />
+        </b-input-group>
       </div>
       <div class="col col-md-2">
         <input
@@ -378,9 +383,9 @@ export default {
       }
     },
     setObjIrregularidade() {
-      const txtObjIrregularidade = document.getElementById(
-        "txt-obj-irregularidade"
-      ).value;
+      const txtObjIrregularidade = document
+        .getElementById("txt-obj-irregularidade")
+        .value.trim();
 
       this.changeObjIrregularidade(txtObjIrregularidade);
 

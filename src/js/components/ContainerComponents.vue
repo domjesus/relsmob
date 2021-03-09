@@ -76,11 +76,14 @@
             </p>
           </div>
 
-          <AnaliseDefesa />
+          <analise-defesa-base-component />
 
           <p
             class="alert alert-danger"
-            v-show="tipoDeApuracaoSelecionado != 'superacaoRenda'"
+            v-show="
+              tipoDeApuracaoSelecionado != 'superacaoRenda' &&
+              tipoDeApuracaoSelecionado != 'acumulacao'
+            "
           >
             Para o tipo de apuração "{{ nomeTipoApuracao || "não informado" }}"
             infelizmente não temos modelo de texto, colabore enviando-os para
@@ -91,12 +94,18 @@
         <b-tab title="Ofício de Recurso">
           <OficioRecurso
             :tipo-de-apuracao="tipoDeApuracao"
-            v-show="tipoDeApuracaoSelecionado == 'superacaoRenda'"
+            v-show="
+              tipoDeApuracaoSelecionado == 'superacaoRenda' ||
+              tipoDeApuracaoSelecionado == 'acumulacao'
+            "
           />
 
           <p
             class="alert alert-danger"
-            v-show="tipoDeApuracaoSelecionado != 'superacaoRenda'"
+            v-show="
+              tipoDeApuracaoSelecionado != 'superacaoRenda' &&
+              tipoDeApuracaoSelecionado != 'acumulacao'
+            "
           >
             Para o tipo de apuração "{{ nomeTipoApuracao || "não informado" }}"
             infelizmente não temos modelo de texto, colabore enviando-os para
@@ -127,12 +136,13 @@ import TiposDeApuracaoModalComponent from "./modals/TiposDeApuracaoModalComponen
 
 import OficioDefesaComponent from "./oficioDefesa/OficioDefesaComponent.vue";
 import AnaliseDefesa from "./AnaliseDefesa.vue";
-import OficioRecurso from "./OficioRecurso.vue";
+import OficioRecurso from "./recurso/RecursoBaseComponent.vue";
 import DadosBasicos from "./DadosBasicos.vue";
 import AnalisePreliminarComponent from "./analisePreliminar/AnalisePreliminarComponent.vue";
 import NavBarComponent from "./../components/NavBarComponent.vue";
 import ContributeComponent from "./modals/ContributeComponent.vue";
 import { getCookie } from "./../utils/CookieManager";
+import AnaliseDefesaBaseComponent from "./analise_defesa/AnaliseDefesaBaseComponent.vue";
 
 export default {
   name: "ContainerComponents",
@@ -201,6 +211,7 @@ export default {
     AnalisePreliminarComponent,
     NavBarComponent,
     ContributeComponent,
+    AnaliseDefesaBaseComponent,
   },
 };
 </script>

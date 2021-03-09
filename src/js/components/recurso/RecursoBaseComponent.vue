@@ -28,7 +28,9 @@
 
     <div :id="sourceToCopy">
       <SuperacaoRenda :defesaNaoApresentada="defesaNaoApresentada" :defesaInsuficiente="defesaInsuficiente" v-if="tipoDeApuracao == 'superacaoRenda'"/>
-      <VinculosFicticios :defesaNaoApresentada="defesaNaoApresentada" :defesaInsuficiente="defesaInsuficiente" v-if="tipoDeApuracao == 'vinculosFicticios'"/>
+      <!-- <VinculosFicticios :defesaNaoApresentada="defesaNaoApresentada" :defesaInsuficiente="defesaInsuficiente" v-if="tipoDeApuracao == 'vinculosFicticios'"/> -->
+      <recurso-acumulacao :defesaNaoApresentada="defesaNaoApresentada" :defesaInsuficiente="defesaInsuficiente" v-if="tipoDeApuracao == 'acumulacao'" />
+
       <div class="alert alert-danger" v-if="!tipoDeApuracao">Não foi selecionado tipo de apuração!</div>
     </div>
 
@@ -38,9 +40,10 @@
 
 <script>
 import { mapGetters } from "vuex";
-import CopyTextComponent from "./CopyTextComponent.vue";
-import SuperacaoRenda from "./recurso/bpc/superacaoRenda.vue";
-import VinculosFicticios from "./recurso/vinculos/VinculosFicticios.vue";
+import CopyTextComponent from "../CopyTextComponent.vue";
+import RecursoAcumulacao from "./acumulacao/RecursoAcumulacao.vue";
+import SuperacaoRenda from "./bpc/superacaoRenda.vue";
+// import VinculosFicticios from "./../vinculos/VinculosFicticios.vue";
 
 export default {
   name: "OficioDefesa",
@@ -59,8 +62,10 @@ export default {
   },
   components: {
     SuperacaoRenda,
-    VinculosFicticios,
+    // VinculosFicticios,
     CopyTextComponent,
+    RecursoAcumulacao,
+    RecursoAcumulacao,
   },
   computed: {
     // ...mapGetters({ tipoDeApuracao: "getTipoDeApuracaoSelecioanado" }),

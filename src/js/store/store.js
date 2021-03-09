@@ -8,7 +8,6 @@ import seguradoModule from "./modules/seguradoModule";
 import regularidadeModule from "./modules/regularidadeModule";
 import debitoModule from "./modules/debitoModule";
 import textosModule from "./modules/textosModule";
-import appOptions from "./modules/appOptions";
 import irregularidadeModule from "./modules/irregularidadeModule";
 import tiposApuracao from "./modules/tiposDeApuracaoModule";
 import acmulacaoModule from "./modules/acumulacaoModule";
@@ -20,7 +19,6 @@ export default new Vuex.Store({
     regularidadeModule,
     debitoModule,
     textosModule,
-    appOptions,
     irregularidadeModule,
     tiposApuracao,
     acmulacaoModule,
