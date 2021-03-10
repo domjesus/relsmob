@@ -61,8 +61,10 @@ export default {
       if (this.nbum.split("/")[0] == 95) return "b95";
       else if (this.nbum.split("/")[0] == 94) return "b94";
     },
-    espName() {
-      return getNameOfEspecie(this.nbum.split("/")[0]);
+    espName(seq = 0) {
+      return !seq
+        ? getNameOfEspecie(this.nbum.split("/")[0])
+        : getNameOfEspecie(this.nbdois.split("/")[0]);
     },
   },
 };
