@@ -29,7 +29,10 @@ export default new Vuex.Store({
         nome: "Trata-se de superação de renda da NT 20/2018/MDS.",
       },
       {
-        nome: "Trata-se de superação de renda da NT 01/2020.",
+        nome: "Trata-se de superação de renda da NT 01/2020/MC.",
+      },
+      {
+        nome: "A apuração tem origem no Acórdão n.° 1.947/2019 TCU - Manutenção Indevida de BPC.",
       },
     ],
     origemApuracaoAtual: "",
