@@ -1,3 +1,5 @@
+import moment from "moment";
+
 export default {
   state: {
     dtAtuCadUnico: "",
@@ -33,12 +35,15 @@ export default {
   actions: {
     changeDtAtuCadUnico(context, newValue) {
       const dt_exploded = newValue.split("/");
-      const dt_apuracao = new Date();
-      const dt_cadastro = new Date(dt_exploded[2], dt_exploded[1], dt_exploded[0]);
-      const twoYears = 1000 * 60 * 60 * 24 * 365 * 2;
+      
+      const dt_cadastro = moment(dt_exploded[2]+"-"+dt_exploded[1]+"-"+dt_exploded[0]);
+      
+      
+      const twoYears = moment().subtract(2,'years');
+      // console.log('DATA: ',dt_cadastro.diff(twoYears,'years',true));
 
-      if (dt_exploded.length === 3) {
-        if (dt_cadastro > 0 && dt_apuracao.getTime() > dt_cadastro.getTime() + twoYears) {
+      if (dt_cadastro.isValid()) {
+        if (dt_cadastro.diff(twoYears,'years',true) < 0) {
           context.commit("setPassouDoisAnos", true);
           context.commit("setStatusCadUnicoAtual", "desatualizado");
         } else {
