@@ -146,9 +146,9 @@
         hidden
       >
     A renda que o(a) Sr(a) {{
-          membroIrregularidade.toUpperCase()
-        }} recebe no valor de {{
-          vlrIrregularidade
+          membroIrregularidade.trim().toUpperCase()
+        }} recebe {{
+          hasRecebeValor
         }} (conforme dados do CadÚnico/CNIS), faz com que a renda percapta do grupo familiar fique superior ao permitido por lei para manutenção do benefício que é de 1/4 do salário mínimo (R$ 275,00) por pessoa, ficando desta forma superado o critério de baixa renda para fins de acesso/permência ao/no BPC. {{
           judicial
         }}
@@ -343,6 +343,11 @@ export default {
       set(value) {
         this.$store.commit("setOrigemApuracaoAtual", value);
       },
+    },
+    hasRecebeValor() {
+      const valor = parseFloat(this.vlrIrregularidade.split(" ")[1]);
+      // console.log(valor);
+      if (valor) return `no valor de ${this.vlrIrregularidade}`;
     },
   },
   methods: {
