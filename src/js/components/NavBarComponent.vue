@@ -22,14 +22,14 @@
           </template>
               <b-dropdown-group id="dropdown-group-1" header="Rural">
                 <b-dropdown-item href="https://teletrabalho.net/scpr/anexos/anexo_iv_of46.php" target="_blank">Anexo IV - Of. 46</b-dropdown-item>
-                <b-dropdown-item href="https://teletrabalho.net/index.php/teletrabalho?item=consulta_modulos_fiscais">Consulta Módulos Fiscais</b-dropdown-item>
-                <b-dropdown-item href="https://teletrabalho.net/index.php/teletrabalho?item=CalculaSete">Diferença 7,5 Anos</b-dropdown-item>
+                <b-dropdown-item href="https://teletrabalho.net/index.php/consulta-modulos-fiscais">Consulta Módulos Fiscais</b-dropdown-item>
+                <b-dropdown-item href="https://teletrabalho.net/index.php/diferenca-entre-datas">Diferença 7,5 Anos</b-dropdown-item>
               </b-dropdown-group>
 
     <b-dropdown-divider></b-dropdown-divider>
 
               <b-dropdown-group id="dropdown-group-2" header="Atividade Especial">
-                <b-dropdown-item href="https://teletrabalho.net/index.php/teletrabalho?item=consulta_atividade_especial_new">Consulta Atividade Profissional</b-dropdown-item>
+                <b-dropdown-item href="https://teletrabalho.net/index.php/consulta-atividade-especial">Consulta Atividade Profissional</b-dropdown-item>
                 <b-dropdown-item href="https://teletrabalho.net/scpr/atividade_especial2.0.php">Despacho Análise Administrativa</b-dropdown-item>
               </b-dropdown-group>
 
@@ -40,7 +40,7 @@
               </b-dropdown-group>
 
     <b-dropdown-divider></b-dropdown-divider> 
-              <b-dropdown-item href="https://teletrabalho.net/index.php/teletrabalho?item=consulta_rpps_new">Consulta RPPS</b-dropdown-item>
+              <b-dropdown-item href="https://teletrabalho.net/index.php/consulta-rpps">Consulta RPPS</b-dropdown-item>
           
         </b-nav-item-dropdown>
       </b-navbar-nav>
