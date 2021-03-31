@@ -156,7 +156,7 @@ export default {
     const dia = new Date().getDate();
     const jaleu = getCookie("jaleu");
 
-    if (jaleu || (dia > 6 && dia < 31)) this.modalToShow = "tiposDeApuracao";
+    if (jaleu || (dia > 6 && dia <= 31)) this.modalToShow = "tiposDeApuracao";
     else this.modalToShow = "";
   },
 
