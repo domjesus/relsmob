@@ -17,7 +17,7 @@ export default {
   },
   mutations: {
     setNomeSegurado(state, newValue) {
-      state.nomeSegurado = newValue;
+      state.nomeSegurado = newValue.toUpperCase();
     },
     setJudicial(state, newValue) {
       state.judicial = newValue;
