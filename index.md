@@ -2,4 +2,4 @@
 
 Esta aplicação é utilizada para gerar despacho para apuração de indício de irregularidade no MOB do BMOB.
 
-Para acessar a aplicação <a href='domjesus.github.io/relsmob/dist/' target='_blank'>Clique aqui</a>
+Para acessar a aplicação <a href='/dist/' target='_blank'>Clique aqui</a>
