@@ -8,7 +8,7 @@
     "bootstrap-vue": "^2.19.0"
   },
   "devDependencies": {
-    "moment": "^2.29.1",
+    "moment": "^2.29.2",
     "@babel/core": "^7.10.1",
     "@popperjs/core": "^2.4.0",
     "babel-loader": "^8.1.0",
